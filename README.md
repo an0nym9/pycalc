@@ -10,5 +10,8 @@ Here are the features this program currently support.
 
 - Basic arithmetic
 - Prime Checker
-- Least Common Multiple
-- Greatest Common Divisitor
+- Find the Least Common Multiple
+- Find the Greatest Common Divisitor
+- Find the Remainder
+- Factorial
+- Permutations

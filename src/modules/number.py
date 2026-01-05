@@ -24,11 +24,13 @@ def gcd(*args,) -> int:
     """Find the Greatest Common Divisitor."""
     cd = [1,]
     for i in range(2, max(args)):
-        div = True
         for n in args:
             if n % i != 0:
-                div = False
                 break
-        if div:
+        else:
             cd.append(i)
     return max(cd)
+
+def remain(a: int, b: int, /) -> int:
+    """Find the remainder of a / b."""
+    return a % b

@@ -1,7 +1,7 @@
 from utils.console import clear_screen, readline
 from modules.basic import add, sub, mul, div
-from modules.number import is_prime, lcm, gcd, remain
-from modules.probability import factorial, permutations
+from modules.number import is_prime, lcm, gcd, remain, factor
+from modules.probability import factorial, permutations, combinations
 
 def main() -> None:
     """Runs the main loop."""
@@ -17,10 +17,12 @@ def main() -> None:
             "Least Common Multiple": lcm,
             "Greatest Common Divisitor": gcd,
             "Find Remainder": remain,
+            "Factor": factor,
         },
         "probability": {
             "Factorial": factorial,
             "Permutations": permutations,
+            "Combinations": combinations,
         },
     }
     option_keys = tuple(options.keys())
@@ -68,13 +70,19 @@ def main() -> None:
                     num1 = readline("Enter the first number:", cast=float).unwrap("Something happend...")
                     num2 = readline("Enter the second number:", cast=float).unwrap("Something happend...")
                     print(f"Remainder of {num1} / {num2} is {remain(num1, num2)}")
+                case "number", "Factor":
+                    num = readline("Enter the number", cast=int).unwrap("Something happend...")
+                    print(f"Prime Factorization of {num} is {factor(num)}")
                 case "probability", "Factorial":
                     num = readline("Enter the number:", cast=int).unwrap("Something happend...")
                     print(f"Factorial of {num} is {factorial(num)}")
-                case "probability", "Permutations":
+                case "probability", "Permutations" | "Combinations":
                     num1 = readline("Enter the first number:", cast=int).unwrap("Something happend...")
                     num2 = readline("Enter the second number:", cast=int).unwrap("Something happend...")
-                    print(f"Permutations: {permutations(num1, num2)}")
+                    if selected_option_keys[user_option-1] == "Permutations":
+                        print(f"Permutations: {permutations(num1, num2)}")
+                    else:
+                        print(f"Combinations: {combinations(num1, num2)}")
             readline("Press enter to continue...", enter_only=True)
         print("Returning to main menu...")
     print("Successfully Exited...")

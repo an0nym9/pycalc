@@ -1,13 +1,22 @@
-def is_prime(n: int) -> bool:
+def is_prime(n: int, /) -> bool:
     """Checks if the given number is prime."""
-    if n <= 2:
+    if n < 2:
         return False
-    for i in range(2, n+1):
-        if i % 2 == 0:
-            continue
-        if i >= n:
-            return True
-    return False
+    for i in range(2, n+1, ):
+        if n % i == 0 and n != i:
+            return False
+    return True
+
+def factor(n: int, /) -> dict:
+    """Factor the given number."""
+    num = n
+    factors = {}
+    while num > 1:
+        for i in range(2, n + 1):
+            if is_prime(i) and num % i == 0:
+                num /= i
+                factors[i] = factors.get(i, 0) + 1
+    return factors
 
 def lcm(*args,) -> int:
     """Find the Least Common Multiple."""

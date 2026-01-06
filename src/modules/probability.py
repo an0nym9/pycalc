@@ -8,3 +8,7 @@ def factorial(n: int, /, *, stop: int = 1) -> int:
 def permutations(a: int, b: int, /) -> int:
     """Find the permutations."""
     return factorial(a) / factorial(a - b)
+
+def combinations(a: int, b: int, /) -> int:
+    """Find the combinations."""
+    return factorial(a) / (factorial(b) * factorial(a - b))

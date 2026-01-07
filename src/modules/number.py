@@ -7,6 +7,14 @@ def is_prime(n: int, /) -> bool:
             return False
     return True
 
+def gen_primes(min: int, max: int, /) -> set:
+    """Generates a sequence of prime numbers."""
+    primes = set()
+    for num in range(min, max + 1):
+        if is_prime(num):
+            primes.add(num)
+    return primes
+
 def factor(n: int, /) -> dict:
     """Factor the given number."""
     num = n

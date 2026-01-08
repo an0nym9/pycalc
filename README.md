@@ -1,6 +1,6 @@
 # pycalc
 
-![version](https://img.shields.io/badge/version-0.0.2-blue)
+![version](https://img.shields.io/badge/version-0.0.3-blue)
 
 A simple command-line calculator built with **Python 3.14.0**.
 
@@ -9,8 +9,8 @@ A simple command-line calculator built with **Python 3.14.0**.
 Here are the features this program currently supports.
 
 * **Basic Arithmetic** (`+`, `-`, `*`, `/`)
-* **Prime Checker**
-* **Generate Prime Sequence**
+* **Prime / Semi Prime Checker**
+* **Generate Prime / Semi Prime Sequence**
 * **Factor**
 * **Least Common Multiple**
 * **Greatest Common Divisitor**
@@ -28,17 +28,18 @@ Here is an example of the program calculating the **LCM** of `12`, `6`, `9`, `7`
 |                      Number                      |
 +==================================================+
 |                                                  |
-|  [1] Is Prime                                    |
-|  [2] Generate Prime Sequence                     |
-|  [3] Least Common Multiple                       |
-|  [4] Greatest Common Divisitor                   |
-|  [5] Find Remainder                              |
-|  [6] Factor                                      |
-|  [7] Go Back                                     |
+|  [1] Check prime                                 |
+|  [2] Check semi prime                            |
+|  [3] Generate prime sequence                     |
+|  [4] Generate semi prime sequence                |
+|  [5] Factor                                      |
+|  [6] Least common multiple                       |
+|  [7] Greatest common divisitor                   |
+|  [8] Get remainder                               |
+|  [9] Exit                                        |
 |                                                  |
 +==================================================+
-
-Enter your selected option (number): 3
+Enter your option (number): 6
 How many number would you like to add? 5
 Enter the number: 12
 Enter the number: 6

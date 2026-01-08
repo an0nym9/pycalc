@@ -1,4 +1,6 @@
 import os
+import sys
+import time
 from utils.guards import handle_exception
 
 clear_screen = lambda: os.system("cls" if os.name == "nt" else "clear")
@@ -29,17 +31,26 @@ def readline(
             return None
     return None
 
+def animateText(msg: str, /, *, delay: float = 0.1) -> None:
+    for char in msg:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()
+
 def show_menu(
     title: str,
     options: tuple[str, ...],
     /,
     *,
     width: int = 50,
+    capitalize_options: bool = False
 ) -> None:
     """Print out a menu."""
     print(f"+{'=' * width}+\n|{title.center(width)}|\n+{"=" * width}+")
     print(f"|{' ' * width}|")
-    for i, option in enumerate(options, start=1):
+    for i, val in enumerate(options, start=1):
+        option = val.capitalize() if capitalize_options else val
         left = f"|  [{i}] "
         print(f"{left}{option.ljust(width-len(left)+1)}|")
     print(f"|{' ' * width}|")

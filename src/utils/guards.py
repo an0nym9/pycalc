@@ -19,7 +19,7 @@ class Result:
             f"Err({self.result})"
         )
 
-    def unwrap(self, msg: str, /) -> any:
+    def unwrap(self, msg: str = "Error Occured", /) -> any:
         """Exit the program if not safe else return result."""
         if not self.safe:
             print(msg)

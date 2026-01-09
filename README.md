@@ -1,8 +1,12 @@
 # pycalc
 
-![version](https://img.shields.io/badge/version-0.0.3-blue)
+![version](https://img.shields.io/badge/version-0.0.3-blue) ![Python Version](https://img.shields.io/badge/Python-3.14.0-blue)
 
-A simple command-line calculator built with **Python 3.14.0**.
+
+A simple command-line calculator built with **Python**. This simple program allows you to do math in your terminal, while keeping it simple and user-friendly.
+
+> [!NOTE]
+> This program is still under development and still not production ready.
 
 ## Features
 
@@ -18,6 +22,7 @@ Here are the features this program currently supports.
 * **Factorial**
 * **Permutations**
 * **Combinations**
+* **History**
 
 ## Example
 

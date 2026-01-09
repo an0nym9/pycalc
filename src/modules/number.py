@@ -1,6 +1,9 @@
 from utils.console import clear_screen, show_menu, readline
+from utils.guards import handle_exception, enhance_params
 from utils.history import add_history
 
+@handle_exception
+@enhance_params
 def is_prime(n: int, /) -> bool:
     """Checks if the given number is prime."""
     if n < 2:
@@ -10,6 +13,8 @@ def is_prime(n: int, /) -> bool:
             return False
     return True
 
+@handle_exception
+@enhance_params
 def gen_primes(min: int, max: int, /) -> set:
     """Generates a sequence of prime numbers."""
     if min > max:
@@ -20,6 +25,8 @@ def gen_primes(min: int, max: int, /) -> set:
             primes.add(num)
     return primes
 
+@handle_exception
+@enhance_params
 def gen_semi_primes(min: int, max: int, /) -> set:
     """Generates a sequence of semi prime numbers."""
     if min > max:
@@ -34,11 +41,15 @@ def gen_semi_primes(min: int, max: int, /) -> set:
                 semi_primes.add(num)
     return semi_primes
 
+@handle_exception
+@enhance_params
 def is_semi_prime(n: int, /) -> bool:
     if n < 4:
         return False
     return n in gen_semi_primes(2, n)
 
+@handle_exception
+@enhance_params
 def factor(n: int, /) -> dict:
     """Factor the given number."""
     num = n
@@ -50,6 +61,8 @@ def factor(n: int, /) -> dict:
                 factors[i] = factors.get(i, 0) + 1
     return factors
 
+@handle_exception
+@enhance_params
 def lcm(*args,) -> int:
     """Find the Least Common Multiple."""
     nums = list(args)
@@ -61,6 +74,8 @@ def lcm(*args,) -> int:
                 continue
             nums[i] += args[i]
 
+@handle_exception
+@enhance_params
 def gcd(*args,) -> int:
     """Find the Greatest Common Divisitor."""
     cd = [1,]
@@ -72,6 +87,8 @@ def gcd(*args,) -> int:
             cd.append(i)
     return max(cd)
 
+@handle_exception
+@enhance_params
 def remain(a: int, b: int, /) -> int:
     """Find the remainder of a / b."""
     return a % b
@@ -133,3 +150,4 @@ def run_number():
                 else:
                     res = f"GCD: {gcd(*nums)}"
                 add_history(res)
+        readline("Press enter to continue...", enter_only=True).unwrap()

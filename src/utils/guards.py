@@ -1,5 +1,6 @@
 import sys
 import inspect
+from functools import wraps
 
 class Result:
     def __init__(self, result: any, safe: bool, /) -> None:
@@ -50,6 +51,7 @@ class Result:
 
 def handle_exception(func: callable, /,) -> callable:
     """Safely handle errors to prevent code from crashing."""
+    @wraps(func)
     def wrapper(*args, **kwargs,) -> Result:
         try:
             return Result(func(*args, **kwargs,), True,)
@@ -59,6 +61,7 @@ def handle_exception(func: callable, /,) -> callable:
 
 def enhance_params(func: callable, /,) -> callable:
     """Enhance function parameter types."""
+    original = getattr(func, "__wrapper__", func) # get the original function
     def wrapper(*args, **kwargs,) -> any:
         annotations = func.__annotations__
         sig = inspect.signature(func)
@@ -68,7 +71,7 @@ def enhance_params(func: callable, /,) -> callable:
             if param.default is not inspect.Parameter.empty:
                 continue
             if str(param.kind) == "POSITIONAL_ONLY":
-                if (a := param.annotation) != (b := type(bound.arguments['args'][pos[name]])):
+                if (a := param.annotation) != (b := type(bound.arguments["args"][pos[name]])):
                     raise TypeError(f"Parameter '{name}' is expected to be of type {a.__name__}, got {b.__name__}.")
-        return func(*args, **kwargs)
+        return original(*args, **kwargs)
     return wrapper

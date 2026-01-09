@@ -1,19 +1,28 @@
 from utils.console import clear_screen, readline, show_menu
+from utils.guards import handle_exception, enhance_params
 from utils.history import add_history
 
+@handle_exception
+@enhance_params
 def add(a: float, b: float, /) -> float:
     """Find the sum of two numbers."""
     return a + b
 
+@handle_exception
+@enhance_params
 def sub(a: float, b: float, /) -> float:
     """Find the difference of two numbers."""
     return a - b
 
+@handle_exception
+@enhance_params
 def mul(a: float, b: float, /) -> float:
     """Find the product of two numbers."""
     return a * b
 
-def div(a: float, b: float, /) -> float:
+@handle_exception
+@enhance_params
+def div(a: float, b: float, /) -> float | ValueError:
     """Find the quotient of two numbers."""
     if b == 0:
         raise ValueError("Cannot divide by zero.")
@@ -39,3 +48,4 @@ def run_basic():
         option = options[option_keys[user_option-1]]
         res = f"{num1} {option[0]} {num2} = {option[1](num1, num2)}"
         add_history(res)
+        readline("Press enter to continue...", enter_only=True).unwrap()

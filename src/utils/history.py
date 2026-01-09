@@ -1,6 +1,8 @@
 import json
 import os
 from datetime import datetime
+from utils.console import clear_screen
+from utils.guards import handle_exception, enhance_params
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 HISTORY_PATH = os.path.abspath(os.path.join(current_dir, "..", "..", "data", "history.json"))
@@ -34,6 +36,8 @@ def load_history() -> list:
     else:
         return []
 
+@handle_exception
+@enhance_params
 def add_history(content: str,) -> None:
     """Add content to history."""
     data = load_history()
@@ -44,3 +48,16 @@ def add_history(content: str,) -> None:
     with open(HISTORY_PATH, 'w') as f:
         json.dump(data, f, indent=4)
     print(content)
+
+@handle_exception
+@enhance_params
+def show_history(*, width: int = 60) -> None:
+    """Show previous history."""
+    clear_screen()
+    with open(HISTORY_PATH, 'r') as f:
+        data = json.load(f)
+    print(f"+{'=' * width}+\n|{"History".center(width)}|\n+{'=' * width}+")
+    for history in data:
+        left = f"| [{history["time"]}] "
+        print(f"{left}{history["content"].ljust(width-len(left))} |")
+    print(f"+{'=' * width}+")

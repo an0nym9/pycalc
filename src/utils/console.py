@@ -12,14 +12,18 @@ def readline(
     *,
     cast: callable = str,
     bool_condition: tuple[str, ...] = ("yes", "y", "true"),
+    attempts: int = 1,
     case_sensitive: bool = False,
     enter_only: bool = False,
 ) -> any:
     """Reads user input and cast it into a specific type."""
     if cast not in (str, bool, float, int,):
         raise ValueError(f"Unknown or unsupported type '{cast.__name__}'.")
-    user_input = input(f"{msg} ").strip()
-    if not enter_only:
+    if enter_only:
+        input(f"{msg} ").strip()
+        return None
+    while attempts != 0:
+        user_input = input(f"{msg} ").strip()
         try:
             if cast is bool:
                 res = user_input if not case_sensitive else user_input.lower()
@@ -28,7 +32,10 @@ def readline(
                 return False
             return cast(user_input)
         except ValueError:
-            return None
+            print(f"Invalid input, expecting of type '{cast.__name__}'.")
+            attempts -= 1
+    else:
+        animateText("Failed to get input, terminating function...")
     return None
 
 def animateText(msg: str, /, *, delay: float = 0.1) -> None:

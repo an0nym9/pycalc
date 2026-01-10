@@ -39,6 +39,7 @@ def readline(
     return None
 
 def animateText(msg: str, /, *, delay: float = 0.1) -> None:
+    """Give a typing animation for 'msg'."""
     for char in msg:
         sys.stdout.write(char)
         sys.stdout.flush()

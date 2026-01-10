@@ -2,6 +2,30 @@ from utils.console import clear_screen, show_menu, readline
 from utils.guards import handle_exception, enhance_params
 from utils.history import add_history
 
+class Fraction:
+    def __init__(
+        self,
+        whole_number: int,
+        numerator: int,
+        denominator: int,
+    ) -> None:
+        self.whole_number = whole_number
+        self.numerator = numerator
+        self.denominator = denominator
+
+    def __str__(self) -> str:
+        return (
+            f"{self.numerator} / {self.denominator}"
+            if not self.whole_number else
+            f"{self.whole_number} {self.numerator} / {self.denominator}"
+        )
+
+    def get_numerator(self) -> int:
+        return self.numerator
+
+    def get_denominator(self) -> int:
+        return self.denominator
+
 @handle_exception
 @enhance_params
 def is_prime(n: int, /) -> bool:
@@ -44,9 +68,41 @@ def gen_semi_primes(min: int, max: int, /) -> set:
 @handle_exception
 @enhance_params
 def is_semi_prime(n: int, /) -> bool:
+    """Checks if the given number is a semi prime number."""
     if n < 4:
         return False
     return n in gen_semi_primes(2, n)
+
+@handle_exception
+@enhance_params
+def fraction_to_decimal(
+    whole_number: int,
+    numerator: int,
+    denominator: int,
+    /,
+) -> float | ValueError:
+    """Convert into a decimal."""
+    if denominator == 0:
+        raise ValueError("Denominator cannot be zero.")
+    return whole_number if whole_number != 0 else 1 * numerator / denominator
+
+@handle_exception
+@enhance_params
+def decimal_to_fraction(d: float, /) -> None:
+    """Approximate to a fraction."""
+    power = 10 ** len(str(d).split('.')[-1])
+    num = d * power
+    divisible = set()
+    for n in range(2, int(num) + 1):
+        if num % n == 0 and (10 ** power) % n == 0:
+            divisible.add(n)
+    whole_number = 0
+    numerator = num / max(divisible) if divisible else num
+    denominator = power / max (divisible) if divisible else power
+    if numerator > denominator:
+        whole_number = numerator // denominator
+        numerator = numerator % denominator
+    return Fraction(*tuple(map(int, (whole_number, numerator, denominator))))
 
 @handle_exception
 @enhance_params
@@ -98,6 +154,7 @@ def run_number():
     options = (
         "check prime", "check semi prime",
         "generate prime sequence", "generate semi prime sequence",
+        "fraction to decimal", "decimal to fraction",
         "factor", "least common multiple",
         "greatest common divisitor", "get remainder",
     )
@@ -107,6 +164,7 @@ def run_number():
          user_option := readline("Enter your option (number):", cast=int).unwrap(),
     )[-1] != len(options) + 1:
         if not (1 <= user_option <= len(options)):
+            print("Unknown option, try again.")
             continue
         match (option := options[user_option-1]):
             case "check prime" | "check semi prime":
@@ -129,6 +187,18 @@ def run_number():
                     res = f"Prime numbers within that range: {gen_primes(minimum, maximum)}"
                 else:
                     res = f"Semi prime numbers within that range: {gen_semi_primes(minimum, maximum)}"
+                add_history(res)
+            case "fractiont to decimal":
+                num1 = readline("Enter the numerator:", cast=int).unwrap()
+                num2 = readline("Enter the denominator:", cast=int).unwrap()
+                if num2 == 0:
+                    print("Denominator cannot be zero.")
+                    continue
+                res = f"{num1} / {num2} as a decimal: {fraction_to_decimal(num1, num2):.2f}"
+                add_history(res)
+            case "decimal to fraction":
+                num = readline("Enter a decimal:", cast=float).unwrap()
+                res = f"{num} as a faction: {decimal_to_fraction(num)}"
                 add_history(res)
             case "factor":
                 num = readline("Enter the number:", cast=int).unwrap()

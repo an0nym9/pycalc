@@ -6,7 +6,7 @@ from modules.probability import run_probability
 
 def main() -> None:
     """Runs the main loop."""
-    options = ("basic", "number", "probability", "history")
+    options = ("basic", "number", "probability", "history",)
     while (
         clear_screen(),
         show_menu("Pycalc", options + ("exit",), capitalize_options=True),

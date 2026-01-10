@@ -4,37 +4,53 @@ from utils.history import add_history
 
 @handle_exception
 @enhance_params
-def add(a: float, b: float, /) -> float:
+def sum(*args: tuple[int, ...],) -> int | float:
     """Find the sum of two numbers."""
-    return a + b
+    num = args[0]
+    if len(args) != 1:
+        for i in range(1, len(args)):
+            num += args[i]
+    return num
 
 @handle_exception
 @enhance_params
-def sub(a: float, b: float, /) -> float:
+def difference(*args: tuple[int, ...],) -> int | float:
     """Find the difference of two numbers."""
-    return a - b
+    num = args[0]
+    if len(args) != 1:
+        for i in range(1, len(args)):
+            num -= args[i]
+    return num
 
 @handle_exception
 @enhance_params
-def mul(a: float, b: float, /) -> float:
+def product(*args: tuple[int, ...],) -> int | float:
     """Find the product of two numbers."""
-    return a * b
+    num = args[0]
+    if len(args) != 1:
+        for i in range(1, len(args)):
+            num *= args[i]
+    return
 
 @handle_exception
 @enhance_params
-def div(a: float, b: float, /) -> float | ValueError:
+def qoutient(*args: tuple[int, ...],) -> float | ValueError:
     """Find the quotient of two numbers."""
-    if b == 0:
+    if args[-1] == 0:
         raise ValueError("Cannot divide by zero.")
-    return a / b
+    num = args[0]
+    if len(args) != 1:
+        for i in range(1, len(args)):
+            num /= args[i]
+    return num
 
 def run_basic():
     """Runs the main loop."""
     options = {
-        "addition": ('+', add),
-        "subtraction": ('-', sub),
-        "multiplication": ('*', mul),
-        "division": ('/', div),
+        "sum": ('+', sum),
+        "difference": ('-', difference),
+        "product": ('*', product),
+        "quotient": ('/', qoutient),
     }
     while (
         clear_screen(),
@@ -42,10 +58,14 @@ def run_basic():
         user_option := readline("Enter your option (number):", cast=int).unwrap(),
     )[-1] != len(options) + 1:
         if not (1 <= user_option <= len(options)):
+            print("Unknown option, try again.")
             continue
-        num1 = readline("Enter the first number:", cast=float).unwrap()
-        num2 = readline("Enter the second number:", cast=float).unwrap()
+        nums = []
+        length = readline("How much number would you like:", cast=int).unwrap()
+        while length > 0:
+            nums.append(readline("Enter a number:", cast=float).unwrap())
+            length -= 1
         option = options[option_keys[user_option-1]]
-        res = f"{num1} {option[0]} {num2} = {option[1](num1, num2)}"
+        res = f"Results: {option[1](*nums)}"
         add_history(res)
         readline("Press enter to continue...", enter_only=True).unwrap()

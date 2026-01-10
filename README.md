@@ -15,6 +15,8 @@ Here are the features this program currently supports.
 * **Basic Arithmetic** (`+`, `-`, `*`, `/`)
 * **Prime / Semi Prime Checker**
 * **Generate Prime / Semi Prime Sequence**
+* **Fraction to decimal**
+* **Decimal to Fraction**
 * **Factor**
 * **Least Common Multiple**
 * **Greatest Common Divisitor**
@@ -37,14 +39,16 @@ Here is an example of the program calculating the **LCM** of `12`, `6`, `9`, `7`
 |  [2] Check semi prime                            |
 |  [3] Generate prime sequence                     |
 |  [4] Generate semi prime sequence                |
-|  [5] Factor                                      |
-|  [6] Least common multiple                       |
-|  [7] Greatest common divisitor                   |
-|  [8] Get remainder                               |
-|  [9] Exit                                        |
+|  [5] Fraction to decimal                         |
+|  [6] Decimal to fraction                         |
+|  [7] Factor                                      |
+|  [8] Least common multiple                       |
+|  [9] Greatest common divisitor                   |
+|  [10] Get remainder                              |
+|  [11] Exit                                       |
 |                                                  |
 +==================================================+
-Enter your option (number): 6
+Enter your option (number): 8
 How many number would you like to add? 5
 Enter the number: 12
 Enter the number: 6

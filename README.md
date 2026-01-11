@@ -1,6 +1,6 @@
 # pycalc
 
-![version](https://img.shields.io/badge/version-0.0.3-blue) ![Python Version](https://img.shields.io/badge/Python-3.14.0-blue)
+![Version](https://img.shields.io/badge/version-0.0.4-purple?style=flat-square) ![Python](https://img.shields.io/badge/python-3.14.0-blue?style=flat-square&logo=python&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-2.2.1-orange?style=flat-square&logo=pytest&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
 
 A simple command-line calculator built with **Python**. This simple program allows you to do math in your terminal, while keeping it simple and user-friendly.
@@ -15,7 +15,7 @@ Here are the features this program currently supports.
 * **Basic Arithmetic** (`+`, `-`, `*`, `/`)
 * **Prime / Semi Prime Checker**
 * **Generate Prime / Semi Prime Sequence**
-* **Fraction to decimal**
+* **Fraction to Decimal**
 * **Decimal to Fraction**
 * **Factor**
 * **Least Common Multiple**
@@ -25,6 +25,33 @@ Here are the features this program currently supports.
 * **Permutations**
 * **Combinations**
 * **History**
+
+## Installation
+
+Follow the steps to set up and run **Pycalc**:
+
+* **Clone the repository**
+    ```bash
+    git clone https://github.com/an0nym9/pycalc
+    cd clone
+    ```
+
+* **Install dependencies with Poetry**:
+    Make sure you have Poetry installed (tested with 2.2.1)
+    ```bash
+    poetry install
+    ```
+
+* **Run Pycalc**
+    ```bash
+    poetry run pycalc
+    ```
+
+* **Running tests with Pytest**
+    Make sure Pytest is installed (tested with 9.0.2):
+    ```bash
+    poetry run pytest
+    ```
 
 ## Example
 
@@ -58,3 +85,7 @@ Enter the number: 14
 LCM: 252
 Press enter to continue...
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

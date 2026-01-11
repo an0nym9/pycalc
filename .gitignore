@@ -1,2 +1,6 @@
-# Ignore Python cache files
+# Ignore Python and Pytest cache files
 __pycache__/
+.pytest_cache/
+
+# Ignore lock files
+*.lock

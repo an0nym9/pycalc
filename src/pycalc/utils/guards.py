@@ -20,6 +20,10 @@ class Result:
             f"Err({self.result})"
         )
 
+    def __bool__(self) -> bool:
+        """Returns True or False if safe"""
+        return self.result if self.safe else False
+
     def unwrap(self, msg: str = "Error Occured", /) -> any:
         """Exit the program if not safe else return result."""
         if not self.safe:
@@ -56,6 +60,7 @@ def handle_exception(func: callable, /,) -> callable:
         try:
             return Result(func(*args, **kwargs,), True,)
         except Exception as err:
+            print(err)
             return Result(err, False,)
     return wrapper
 
@@ -71,7 +76,8 @@ def enhance_params(func: callable, /,) -> callable:
             if param.default is not inspect.Parameter.empty:
                 continue
             if str(param.kind) == "POSITIONAL_ONLY":
-                if (a := param.annotation) != (b := type(bound.arguments["args"][pos[name]])):
+                if ((a := param.annotation) != (b := type(pargs := bound.arguments["args"][pos[name]])) and
+                    str(param.annotation).split('[')[0] != b.__name__ and not any(type(arg) == str for arg in pargs)):
                     raise TypeError(f"Parameter '{name}' is expected to be of type {a.__name__}, got {b.__name__}.")
         return original(*args, **kwargs)
     return wrapper

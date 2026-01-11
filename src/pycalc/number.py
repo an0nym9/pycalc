@@ -1,6 +1,6 @@
-from utils.console import clear_screen, show_menu, readline
-from utils.guards import handle_exception, enhance_params
-from utils.history import add_history
+from pycalc.utils.console import clear_screen, show_menu, readline
+from pycalc.utils.guards import handle_exception, enhance_params
+from pycalc.utils.history import add_history
 
 class Fraction:
     def __init__(
@@ -8,12 +8,15 @@ class Fraction:
         whole_number: int,
         numerator: int,
         denominator: int,
-    ) -> None:
+        /,
+    ) -> None | ValueError:
+        """Initialize a Fraction object."""
         self.whole_number = whole_number
         self.numerator = numerator
         self.denominator = denominator
 
     def __str__(self) -> str:
+        """Returns the fraction as a string."""
         return (
             f"{self.numerator} / {self.denominator}"
             if not self.whole_number else
@@ -21,9 +24,11 @@ class Fraction:
         )
 
     def get_numerator(self) -> int:
+        """Return the numerator of the fraction."""
         return self.numerator
 
     def get_denominator(self) -> int:
+        """Returns the denominator of the fraction."""
         return self.denominator
 
 @handle_exception
@@ -71,7 +76,7 @@ def is_semi_prime(n: int, /) -> bool:
     """Checks if the given number is a semi prime number."""
     if n < 4:
         return False
-    return n in gen_semi_primes(2, n)
+    return n in gen_semi_primes(2, n).unwrap()
 
 @handle_exception
 @enhance_params
@@ -84,7 +89,7 @@ def fraction_to_decimal(
     """Convert into a decimal."""
     if denominator == 0:
         raise ValueError("Denominator cannot be zero.")
-    return whole_number if whole_number != 0 else 1 * numerator / denominator
+    return whole_number+ numerator / denominator
 
 @handle_exception
 @enhance_params
@@ -99,6 +104,8 @@ def decimal_to_fraction(d: float, /) -> None:
     whole_number = 0
     numerator = num / max(divisible) if divisible else num
     denominator = power / max (divisible) if divisible else power
+    if denominator == 0:
+        raise ValueError("Denominator cannot be zero.")
     if numerator > denominator:
         whole_number = numerator // denominator
         numerator = numerator % denominator

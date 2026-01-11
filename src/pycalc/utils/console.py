@@ -1,11 +1,12 @@
 import os
 import sys
 import time
-from utils.guards import handle_exception
+from pycalc.utils.guards import handle_exception, enhance_params
 
 clear_screen = lambda: os.system("cls" if os.name == "nt" else "clear")
 
 @handle_exception
+@enhance_params
 def readline(
     msg: str,
     /,
@@ -38,6 +39,8 @@ def readline(
         animateText("Failed to get input, terminating function...")
     return None
 
+@handle_exception
+@enhance_params
 def animateText(msg: str, /, *, delay: float = 0.1) -> None:
     """Give a typing animation for 'msg'."""
     for char in msg:
@@ -46,6 +49,8 @@ def animateText(msg: str, /, *, delay: float = 0.1) -> None:
         time.sleep(delay)
     print()
 
+@handle_exception
+@enhance_params
 def show_menu(
     title: str,
     options: tuple[str, ...],

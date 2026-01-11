@@ -1,11 +1,11 @@
 import json
 import os
 from datetime import datetime
-from utils.console import clear_screen
-from utils.guards import handle_exception, enhance_params
+from pycalc.utils.console import clear_screen
+from pycalc.utils.guards import handle_exception, enhance_params
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-HISTORY_PATH = os.path.abspath(os.path.join(current_dir, "..", "..", "data", "history.json"))
+HISTORY_PATH = os.path.abspath(os.path.join(current_dir, "..", "..", "..", "data", "history.json"))
 
 def create_history() -> None:
     """Create history if not exists."""

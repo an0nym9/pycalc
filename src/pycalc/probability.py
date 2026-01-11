@@ -1,6 +1,6 @@
-from utils.console import readline, show_menu
-from utils.guards import handle_exception, enhance_params
-from utils.history import add_history
+from pycalc.utils.console import readline, show_menu
+from pycalc.utils.guards import handle_exception, enhance_params
+from pycalc.utils.history import add_history
 
 @handle_exception
 @enhance_params
@@ -17,14 +17,15 @@ def factorial(n: int, /, *, stop: int = 1) -> int:
 @enhance_params
 def permutations(a: int, b: int, /) -> int:
     """Find the permutations."""
-    return factorial(a) / factorial(a - b)
+    return factorial(a).unwrap() / factorial(a - b).unwrap()
 
 @handle_exception
 @enhance_params
 def combinations(a: int, b: int, /) -> int:
     """Find the combinations."""
-    return factorial(a) / (factorial(b) * factorial(a - b))
+    return factorial(a).unwrap() / (factorial(b).unwrap() * factorial(a - b).unwrap())
 
+@handle_exception
 def run_probability() -> None:
     """Runs the main loop."""
     options = ("factorial", "permutations", "combinations",)

@@ -1,6 +1,6 @@
-from utils.console import clear_screen, readline, show_menu
-from utils.guards import handle_exception, enhance_params
-from utils.history import add_history
+from pycalc.utils.console import clear_screen, readline, show_menu
+from pycalc.utils.guards import handle_exception, enhance_params
+from pycalc.utils.history import add_history
 
 @handle_exception
 @enhance_params
@@ -30,7 +30,7 @@ def product(*args: tuple[int, ...],) -> int | float:
     if len(args) != 1:
         for i in range(1, len(args)):
             num *= args[i]
-    return
+    return num
 
 @handle_exception
 @enhance_params
@@ -61,11 +61,11 @@ def run_basic():
             print("Unknown option, try again.")
             continue
         nums = []
-        length = readline("How much number would you like:", cast=int).unwrap()
+        length = readline("How many number would you like:", cast=int).unwrap()
         while length > 0:
             nums.append(readline("Enter a number:", cast=float).unwrap())
             length -= 1
         option = options[option_keys[user_option-1]]
-        res = f"Results: {option[1](*nums)}"
+        res = f"Results: {option[1](*nums).unwrap():.2f}"
         add_history(res)
         readline("Press enter to continue...", enter_only=True).unwrap()

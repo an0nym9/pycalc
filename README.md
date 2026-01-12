@@ -21,6 +21,9 @@ Here are the features this program currently supports.
 * **Least Common Multiple**
 * **Greatest Common Divisitor**
 * **Get Remainder**
+* **Fraction Tools**
+    * **Proper Funciton**
+    * **Get Numerator / Denominator**
 * **Factorial**
 * **Permutations**
 * **Combinations**
@@ -36,7 +39,7 @@ Follow the steps to set up and run **Pycalc**:
     cd clone
     ```
 
-* **Install dependencies with Poetry**:
+* **Install dependencies with Poetry**<br/>
     Make sure you have Poetry installed (tested with 2.2.1)
     ```bash
     poetry install
@@ -47,7 +50,7 @@ Follow the steps to set up and run **Pycalc**:
     poetry run pycalc
     ```
 
-* **Running tests with Pytest**
+* **Running tests with Pytest**<br/>
     Make sure Pytest is installed (tested with 9.0.2):
     ```bash
     poetry run pytest
@@ -72,7 +75,8 @@ Here is an example of the program calculating the **LCM** of `12`, `6`, `9`, `7`
 |  [8] Least common multiple                       |
 |  [9] Greatest common divisitor                   |
 |  [10] Get remainder                              |
-|  [11] Exit                                       |
+|  [11] Fraction tools                             |
+|  [12] Exit                                       |
 |                                                  |
 +==================================================+
 Enter your option (number): 8

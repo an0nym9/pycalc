@@ -156,6 +156,40 @@ def remain(a: int, b: int, /) -> int:
     """Find the remainder of a / b."""
     return a % b
 
+@handle_exception
+def run_fraction_tools() -> None:
+    """Runs fraction tools section."""
+    options = ("proper fraction", "get numerator", "get denominator",)
+    while (
+         clear_screen(),
+         show_menu("Number", options + ("exit",), capitalize_options=True),
+         user_option := readline("Enter your option (number):", cast=int).unwrap(),
+    )[-1] != len(options) + 1:
+        if not (1 <= user_option <= len(options)):
+            print("Unknown option, try again.")
+            continue
+        whole_number = readline("Enter the whole number:", cast=int).unwrap()
+        numerator = readline("Enter the numerator:", cast=int).unwrap()
+        denominator = readline("Enter the denominator:", cast=int).unwrap()
+        if denominator == 0:
+            print("Denominator cannot be zero, try again.")
+            continue
+        match (option := options[user_option-1]):
+            case "proper fraction":
+                if numerator < denominator:
+                    print(f"{f"{whole_number} " if whole_number > 0 else ''}{numerator} / {denominator}")
+                    continue
+                new_whole_number = (numerator + whole_number) // denominator
+                new_numerator = (numerator + whole_number) % denominator
+                add_history(f"Proper fraction: {new_whole_number} {new_numerator} / {denominator}")
+            case "get numerator" | "get denominator":
+                fraction = Fraction(whole_number, numerator, denominator)
+                if option == "get numerator":
+                    add_history(f"Numerator: {fraction.get_numerator()}")
+                else:
+                    add_history(f"Denominator: {fraction.get_denominator()}")
+        readline("Press enter to continue...", enter_only=True).unwrap()
+
 def run_number():
     """Runs the main loop."""
     options = (
@@ -164,6 +198,7 @@ def run_number():
         "fraction to decimal", "decimal to fraction",
         "factor", "least common multiple",
         "greatest common divisitor", "get remainder",
+        "fraction tools",
     )
     while (
          clear_screen(),
@@ -227,4 +262,6 @@ def run_number():
                 else:
                     res = f"GCD: {gcd(*nums)}"
                 add_history(res)
+            case "fraction tools":
+                run_fraction_tools()
         readline("Press enter to continue...", enter_only=True).unwrap()

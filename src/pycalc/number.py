@@ -20,7 +20,7 @@ class Fraction:
         return (
             f"{self.numerator} / {self.denominator}"
             if not self.whole_number else
-            f"{self.whole_number} {self.numerator} / {self.denominator}"
+            f"{self.whole_number} {f"{self.numerator} / {self.denominator}" if self.numerator != 0 else ''}"
         )
 
     def get_numerator(self) -> int:
@@ -89,7 +89,7 @@ def fraction_to_decimal(
     """Convert into a decimal."""
     if denominator == 0:
         raise ValueError("Denominator cannot be zero.")
-    return whole_number+ numerator / denominator
+    return (whole_number * denominator +  numerator) / denominator
 
 @handle_exception
 @enhance_params
@@ -152,8 +152,10 @@ def gcd(*args,) -> int:
 
 @handle_exception
 @enhance_params
-def remain(a: int, b: int, /) -> int:
+def remain(a: int, b: int, /) -> int | ValueError:
     """Find the remainder of a / b."""
+    if b == 0:
+        raise ValueError("Cannot divide by zero.")
     return a % b
 
 @handle_exception
@@ -162,7 +164,7 @@ def run_fraction_tools() -> None:
     options = ("proper fraction", "get numerator", "get denominator",)
     while (
          clear_screen(),
-         show_menu("Number", options + ("exit",), capitalize_options=True),
+         show_menu("Factorial Tools", options + ("exit",), capitalize_options=True),
          user_option := readline("Enter your option (number):", cast=int).unwrap(),
     )[-1] != len(options) + 1:
         if not (1 <= user_option <= len(options)):
@@ -179,15 +181,23 @@ def run_fraction_tools() -> None:
                 if numerator < denominator:
                     print(f"{f"{whole_number} " if whole_number > 0 else ''}{numerator} / {denominator}")
                     continue
-                new_whole_number = (numerator + whole_number) // denominator
-                new_numerator = (numerator + whole_number) % denominator
-                add_history(f"Proper fraction: {new_whole_number} {new_numerator} / {denominator}")
+                new_whole_number = (numerator // denominator) + whole_number
+                new_numerator = numerator % denominator
+                result = f"{new_whole_number if new_whole_number != 0 else ''} {f"{new_numerator} / {denominator}" if new_numerator != 0 else ''}"
             case "get numerator" | "get denominator":
                 fraction = Fraction(whole_number, numerator, denominator)
-                if option == "get numerator":
-                    add_history(f"Numerator: {fraction.get_numerator()}")
-                else:
-                    add_history(f"Denominator: {fraction.get_denominator()}")
+                result = fraction.get_numerator() if option == "get numerator" else fraction.get_denominator()
+        add_history({
+            "Category": "Number - Fraction Tools",
+            "Type": option.capitalize(),
+            "Args": {
+                "Whole Number": whole_number,
+                "Numerator": numerator,
+                "Denominator": denominator,
+            },
+            "Results": result,
+        })
+        print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()
 
 def run_number():
@@ -214,41 +224,68 @@ def run_number():
                 if num < 0:
                     print("Cannot be negative.")
                     continue
-                if option == "check prime":
-                    res = f"{num} is {"a" if is_prime(num) else "not a"} prime number."
-                else:
-                    res = f"{num} is {"a" if is_semi_prime(num) else "not a"} semi prime number."
-                add_history(res)
+                result = is_prime(num).unwrap() if option == "check prime" else is_semi_prime(num).unwrap()
+                add_history({
+                    "Category": "Number",
+                    "Type": option.capitalize(),
+                    "Arg": num,
+                    "Result": result,
+                })
             case "generate prime sequence" | "generate semi prime sequence":
                 minimum = readline("Enter the minimum:", cast=int).unwrap()
                 maximum = readline("Enter the maximum:", cast=int).unwrap()
                 if maximum < minimum:
                     print("Maximum cannot be smaller than minimum.")
                     continue
-                if option == "generate prime sequence":
-                    res = f"Prime numbers within that range: {gen_primes(minimum, maximum)}"
-                else:
-                    res = f"Semi prime numbers within that range: {gen_semi_primes(minimum, maximum)}"
-                add_history(res)
+                result = gen_primes(minimum, maximum).unwrap() if option == "generate prime sequence" else gen_semi_primes(minimum, maximum).unwrap()
+                add_history({
+                    "Category": "Number",
+                    "Type": option.capitalize(),
+                    "Args": {
+                        "Minimum": minimum,
+                        "Maximum": maximum,
+                    },
+                    "Result": list(result),
+                })
             case "fractiont to decimal":
-                num1 = readline("Enter the numerator:", cast=int).unwrap()
-                num2 = readline("Enter the denominator:", cast=int).unwrap()
+                num1 = readline("Enter the whole number:", cast=int).unwrap()
+                num2 = readline("Enter the numerator:", cast=int).unwrap()
+                num3 = readline("Enter the denominator:", cast=int).unwrap()
                 if num2 == 0:
                     print("Denominator cannot be zero.")
                     continue
-                res = f"{num1} / {num2} as a decimal: {fraction_to_decimal(num1, num2):.2f}"
-                add_history(res)
+                result = fraction_to_decimal(num1, num2).unwrap()
+                add_history({
+                    "Category": "Number",
+                    "Type": option.capitalize(),
+                    "Args": {
+                        "Whole Number": num1,
+                        "Numerator": num2,
+                        "Denominator": num3,
+                    },
+                    "Result": result,
+                })
             case "decimal to fraction":
                 num = readline("Enter a decimal:", cast=float).unwrap()
-                res = f"{num} as a faction: {decimal_to_fraction(num)}"
-                add_history(res)
+                result = decimal_to_fraction(num).unwrap()
+                add_history({
+                    "Category": "Number",
+                    "Type": option.capitalize(),
+                    "Args": num,
+                    "Result": str(result),
+                })
             case "factor":
                 num = readline("Enter the number:", cast=int).unwrap()
                 if num < 0:
                     print("Dont support negative numbers.")
                     continue
-                res = f"Factors of {num} are {factor(num)}"
-                add_history(res)
+                result = factor(num).unwrap()
+                add_history({
+                    "Category": "Number",
+                    "Type": option.capitalize(),
+                    "Arg": num,
+                    "Result": result,
+                })
             case "least common multiple" | "greatest common divisitor":
                 length = readline("How many number would you like to add?", cast=int).unwrap()
                 if length < 0:
@@ -257,11 +294,24 @@ def run_number():
                 nums = set()
                 for num in range(length):
                     nums.add(readline("Enter the number:", cast=int).unwrap())
-                if option == "least common multiple":
-                    res = f"LCM: {lcm(*nums)}"
-                else:
-                    res = f"GCD: {gcd(*nums)}"
-                add_history(res)
+                result = lcm(*nums).unwrap() if option == "least common multiple" else gcd(*nums).unwrap()
+                add_history({
+                    "Category": "Number",
+                    "Type": option.capitalize(),
+                    "Args": nums,
+                    "Result": list(result),
+                })
+            case "get remainder":
+                num1 = readline("Enter the first number:", cast=int).unwrap()
+                num2 = readline("Enter the second number:", cast=int).unwrap()
+                result = remain(num1, num2).unwrap()
+                add_history({
+                    "Category": "Number",
+                    "Type": option.capitalize(),
+                    "Args": [num1, num2],
+                    "Results": result,
+                })
             case "fraction tools":
                 run_fraction_tools()
+        print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()

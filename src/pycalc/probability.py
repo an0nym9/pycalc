@@ -1,15 +1,15 @@
-from pycalc.utils.console import readline, show_menu
+from pycalc.utils.console import clear_screen, readline, show_menu
 from pycalc.utils.guards import handle_exception, enhance_params
 from pycalc.utils.history import add_history
 
 @handle_exception
 @enhance_params
-def factorial(n: int, /, *, stop: int = 1) -> int:
+def factorial(n: int, /) -> int:
     """Find the factorial of 'n'."""
     if n in (0, 1):
         return 1
     res = n
-    for i in range(res-1, stop - 1, -1):
+    for i in range(res-1, 1, -1):
         res *= i
     return res
 
@@ -30,6 +30,7 @@ def run_probability() -> None:
     """Runs the main loop."""
     options = ("factorial", "permutations", "combinations",)
     while (
+        clear_screen(),
         show_menu("Probability", options + ("exit",), capitalize_options=True),
         user_option := readline("Enter your selected option (number):", cast=int).unwrap()
     )[-1] != len(options) + 1:
@@ -42,17 +43,25 @@ def run_probability() -> None:
                 if num < 0:
                     print("Cant factorial a negative number.")
                     continue
-                res = f"Factorial of {num} is {factorial(num)}"
-                add_history(res)
+                result = factorial(num).unwrap()
+                add_history({
+                    "Category": "Probability",
+                    "Type": option.capitalize(),
+                    "Arg": num,
+                    "Result": result,
+                })
             case "permutations" | "combinations":
                 num1 = readline("Enter the first number:", cast=int).unwrap()
                 num2 = readline("Enter the second number:", cast=int).unwrap()
                 if num2 > num1:
                     print("A non-permisble value")
                     continue
-                if option == "permutations":
-                    res = f"Permutations of {num1} and {num2}: {permutations(num1, num2)}"
-                else:
-                    res = f"Combinations of {num1} and {num2}: {combinations(num1, num2)}"
-                add_history(res)
+                result = permutations(num1, num2).unwrap() if option == "permutations" else combinations(num1, num2).unwrap()
+                add_history({
+                    "Category": "Probability",
+                    "Type": option.capitalize(),
+                    "Args": [num1, num2],
+                    "Result": result,
+                })
+        print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()

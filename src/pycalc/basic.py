@@ -4,7 +4,7 @@ from pycalc.utils.history import add_history
 
 @handle_exception
 @enhance_params
-def sum(*args: tuple[int, ...],) -> int | float:
+def sum(*args: tuple[float, ...],) -> float | float:
     """Find the sum of two numbers."""
     num = args[0]
     if len(args) != 1:
@@ -14,7 +14,7 @@ def sum(*args: tuple[int, ...],) -> int | float:
 
 @handle_exception
 @enhance_params
-def difference(*args: tuple[int, ...],) -> int | float:
+def difference(*args: tuple[float, ...],) -> float | float:
     """Find the difference of two numbers."""
     num = args[0]
     if len(args) != 1:
@@ -24,7 +24,7 @@ def difference(*args: tuple[int, ...],) -> int | float:
 
 @handle_exception
 @enhance_params
-def product(*args: tuple[int, ...],) -> int | float:
+def product(*args: tuple[float, ...],) -> float | float:
     """Find the product of two numbers."""
     num = args[0]
     if len(args) != 1:
@@ -34,13 +34,13 @@ def product(*args: tuple[int, ...],) -> int | float:
 
 @handle_exception
 @enhance_params
-def qoutient(*args: tuple[int, ...],) -> float | ValueError:
+def qoutient(*args: tuple[float, ...],) -> float | ValueError:
     """Find the quotient of two numbers."""
-    if args[-1] == 0:
-        raise ValueError("Cannot divide by zero.")
     num = args[0]
     if len(args) != 1:
         for i in range(1, len(args)):
+            if args[i] == 0:
+                raise ValueError("Cannot divide by zero.")
             num /= args[i]
     return num
 
@@ -66,6 +66,12 @@ def run_basic():
             nums.append(readline("Enter a number:", cast=float).unwrap())
             length -= 1
         option = options[option_keys[user_option-1]]
-        res = f"Results: {option[1](*nums).unwrap():.2f}"
-        add_history(res)
+        res = option[1](*nums).unwrap()
+        print(f">> {res}")
+        add_history({
+            "Category": "Basic",
+            "Type": option_keys[user_option-1].capitalize(),
+            "Args": nums,
+            "Result": res,
+        })
         readline("Press enter to continue...", enter_only=True).unwrap()

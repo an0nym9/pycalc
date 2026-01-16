@@ -178,3 +178,22 @@ n = 34
 r = 12
 print(f"Combinations: {combinations(n, r).unwrap()}")  # 225792840
 ```
+
+---
+
+### Evaluate Expressions
+
+This feature allows the user to type expressions, and pycalc will be able to compute safely. Example:
+
+> [!NOTE]
+> This feature is still under development and not fully implemented.
+
+```python
+import ast
+from pycalc.parser import eval_expr
+
+expr = readline("Enter an expression:").unwrap()
+tree = ast.parse(expr, mode="eval")
+res = eval_expr(tree.body).unwrap()
+print(f">> {res}")
+```

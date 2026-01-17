@@ -1,6 +1,6 @@
 from pycalc.utils.console import clear_screen, readline, show_menu
 from pycalc.utils.guards import handle_exception, enhance_params
-from pycalc.utils.history import add_history
+# from pycalc.utils.history import add_history
 
 @handle_exception
 @enhance_params
@@ -68,10 +68,10 @@ def run_basic():
         option = options[option_keys[user_option-1]]
         res = option[1](*nums).unwrap()
         print(f">> {res}")
-        add_history({
-            "Category": "Basic",
-            "Type": option_keys[user_option-1].capitalize(),
-            "Args": nums,
-            "Result": res,
-        })
+        # add_history({
+        #     "Category": "Basic",
+        #     "Type": option_keys[user_option-1].capitalize(),
+        #     "Args": nums,
+        #     "Result": res,
+        # })
         readline("Press enter to continue...", enter_only=True).unwrap()

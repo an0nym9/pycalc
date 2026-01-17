@@ -33,8 +33,7 @@ def load_history() -> list:
                 return json.load(f)
             except json.JSONDecodeError:
                 return []
-    else:
-        return []
+    return []
 
 @handle_exception
 @enhance_params

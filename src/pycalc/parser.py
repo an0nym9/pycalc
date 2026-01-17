@@ -62,8 +62,7 @@ def eval_expr(node: ast.AST) -> any:
         op_type = type(node.op)
         if op_type in OPERATORS:
             return OPERATORS[op_type](left, right)
-        else:
-            raise ValueError(f"Unsupported operator: {op_type}")
+        raise ValueError(f"Unsupported operator: {op_type}")
     elif isinstance(node, ast.Constant):
         return node.value
     elif hasattr(ast, "Num") and isinstance(node, ast.Num):
@@ -78,24 +77,19 @@ def eval_expr(node: ast.AST) -> any:
             return +operand
         elif isinstance(node.op, ast.USub):
             return -operand
-        else:
-            raise ValueError(f"Unsupported unary operator: {type(node.op)}")
+        raise ValueError(f"Unsupported unary operator: {type(node.op)}")
     elif isinstance(node, ast.Call):
         if not isinstance(node.func, ast.Name):
             raise ValueError("Only named functions are allowed")
         func_name = node.func.id
         if func_name in FUNCTIONS:
-            args = [eval_expr(arg) for arg in node.args]
-            kwargs = {kw.arg: eval_expr(kw.value) for kw in node.keywords}
-
+            args = [eval_expr(arg).unwrap() for arg in node.args]
+            kwargs = {kw.arg: eval_expr(kw.value).unwrap() for kw in node.keywords}
             res = FUNCTIONS[func_name](*args, **kwargs)
-
             if isinstance(res, Result):
                 if not res.is_ok():
                     raise ValueError(f"Function {func_name} failed: {res.err()}")
                 return res.unwrap()
             return res
-        else:
-            raise ValueError(f"Function {func_name} is not allowed")
-    else:
-        raise TypeError(f"Unsupported expression: {type(node)}")
+        raise ValueError(f"Function {func_name} is not allowed")
+    raise TypeError(f"Unsupported expression: {type(node)}")

@@ -1,6 +1,6 @@
 # pycalc
 
-![Version](https://img.shields.io/badge/version-0.0.4-purple?style=flat-square) ![Python](https://img.shields.io/badge/python-3.14.0-blue?style=flat-square&logo=python&logoColor=white) ![Poetry](https://img.shields.io/badge/poetry-2.2.1-lightblue?style=flat-square&logo=poetry&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-2.2.1-orange?style=flat-square&logo=pytest&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+![Version](https://img.shields.io/badge/version-0.0.5-purple?style=flat-square) ![Python](https://img.shields.io/badge/python-3.14.0-blue?style=flat-square&logo=python&logoColor=white) ![Poetry](https://img.shields.io/badge/poetry-2.2.1-lightblue?style=flat-square&logo=poetry&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-2.2.1-orange?style=flat-square&logo=pytest&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
 A simple command-line calculator built in **Python**. This simple program allows you to do math in your terminal, while keeping it simple and user-friendly.
 
@@ -27,7 +27,7 @@ Here are the features this program currently supports. If you need more details 
 * **Permutations**
 * **Combinations**
 * **History**
-* **Evaluate Expressions** (comming soon)
+* **Evaluate Expressions**
 
 ## Installation
 

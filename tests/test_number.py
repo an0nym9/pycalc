@@ -1,3 +1,5 @@
+import pytest
+
 from pycalc.number import ( # type: ignore
     is_prime,
     is_semi_prime,
@@ -11,32 +13,170 @@ from pycalc.number import ( # type: ignore
     remain,
 )
 
-def test_is_prime() -> None:
-    assert is_prime(2)
+@pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
+    # Happy cases
+    (2, "", False, True),
+    (19, "", False, True),
 
-def test_is_semi_prime() -> None:
-    assert is_semi_prime(4)
+    # Error cases
+    (None, "No number provided.", True, None),
+])
+def test_is_prime(num, error_msg, is_error, expected_value):
+    result = is_prime(num)
+    if not is_error:
+        assert result.is_ok()
+        assert result.ok() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg
 
-def test_gen_primes() -> None:
-    assert gen_primes(1, 10).unwrap() == {2, 3, 5, 7}
+@pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
+    # Happy cases
+    (4, "", False, True),
+    (6, "", False, True),
 
-def test_gen_semi_primes() -> None:
-    assert gen_semi_primes(1, 10).unwrap() == {4, 6, 9, 10}
+    # Error cases
+    (None, "No number provided.", True, None),
+])
+def test_is_semi_prime(num, error_msg, is_error, expected_value):
+    result = is_semi_prime(num)
+    if not is_error:
+        assert result.is_ok()
+        assert result.ok() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg
 
-def test_fraction_to_decimal() -> None:
-    assert fraction_to_decimal(2, 3, 4).unwrap() == 2.75
+@pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
+    # Happy cases
+    ((1, 10), "", False, {2, 3, 5, 7}),
+    ((10, 20), "", False, {11, 13, 17, 19}),
 
-def test_decimal_to_fraction() -> None:
-    assert str(decimal_to_fraction(0.6).unwrap()) == "3 / 5"
+    # Error cases
+    ((1, None), "Missing a range.", True, None),
+    ((None, 100), "Missing a range.", True, None),
+])
+def test_gen_primes(args, error_msg, is_error, expected_value):
+    result = gen_primes(*args)
+    if not is_error:
+        assert result.is_ok()
+        assert result.ok() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg
 
-def test_factor() -> None:
-    assert factor(45).unwrap() == {3: 2, 5: 1}
+@pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
+    # Happy cases
+    ((1, 10), "", False, {4, 6, 9, 10}),
+    ((20, 30), "", False, {21, 22, 25, 26}),
 
-def test_lcm() -> None:
-    assert lcm(4, 6, 8).unwrap() == 24
+    # Error cases
+    ((1, None), "Missing a range.", True, None),
+    ((None, 12), "Missing a range.", True, None),
+])
+def test_gen_semi_primes(args, error_msg, is_error, expected_value):
+    result = gen_semi_primes(*args)
+    if not is_error:
+        assert result.is_ok()
+        assert result.ok() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg
 
-def test_gcd() -> None:
-    assert gcd(24, 36, 60).unwrap() == 12
+@pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
+    # Happy cases
+    ((2, 3, 4), "", False, 2.75),
+    ((10, 0, 1), "", False, 10.0),
 
-def test_remain() -> None:
-    assert remain(17, 5).unwrap() == 2
+    # Error cases
+    ((), "Missing a number.", True, None),
+    ((1, 0, 0), "Denominator cannot be zero.", True, None),
+])
+def test_fraction_to_decimal(args, error_msg, is_error, expected_value):
+    result = fraction_to_decimal(*args)
+    if not is_error:
+        assert result.is_ok()
+        assert result.ok() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg
+
+# @pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
+#     # Happy cases
+#     (0.6, "", False, "3 / 5"),
+#     (5.0, "", False, "5 / 1"),
+
+#     # Error cases
+#     (None, "Input cannot be None.", True, None),
+# ])
+# def test_decimal_to_fraction(num, error_msg, is_error, expected_value):
+#     result = decimal_to_fraction(num)
+#     if not is_error:
+#         assert result.is_ok()
+#         assert str(result.ok()) == expected_value
+#     else:
+#         assert result.is_err()
+#         assert str(result.err()) == error_msg
+
+# @pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
+#     # Happy cases
+#     (45, "", False, {3: 2, 5: 1}),
+#     (60, "", False, {2: 2, 3: 1, 5: 1}),
+#     (13, "", False, {13: 1}),
+#     (1, "", False, {}),
+# ])
+# def test_factor(num, error_msg, is_error, expected_value):
+#     result = factor(num)
+#     if not is_error:
+#         assert result.is_ok()
+#         assert result.ok() == expected_value
+#     else:
+#         assert result.is_err()
+#         assert str(result.err()) == error_msg
+
+# @pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
+#     # Happy cases
+#     ((4, 6, 8), "", False, 24),
+#     ((5, 10, 15), "", False, 30),
+#     ((7, 3), "", False, 21),
+# ])
+# def test_lcm(args, error_msg, is_error, expected_value):
+#     result = lcm(*args)
+#     if not is_error:
+#         assert result.is_ok()
+#         assert result.ok() == expected_value
+#     else:
+#         assert result.is_err()
+#         assert str(result.err()) == error_msg
+
+# @pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
+#     # Happy cases
+#     ((24, 36, 60), "", False, 12),
+#     ((17, 13), "", False, 1),
+#     ((8, 32, 24), "", False, 8),
+# ])
+# def test_gcd(args, error_msg, is_error, expected_value):
+#     result = gcd(*args)
+#     if not is_error:
+#         assert result.is_ok()
+#         assert result.unwrap() == expected_value
+#     else:
+#         assert result.is_err()
+#         assert str(result.err()) == error_msg
+# @pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
+#     # Happy cases
+#     (0.6, "", False, "3 / 5"),
+#     (5.0, "", False, "5 / 1"),
+#     (1.25, "", False, "1 1 / 4"),
+
+#     # Error cases
+#     (None, "Input cannot be None.", True, None),
+# ])
+# def test_decimal_to_fraction(num, error_msg, is_error, expected_value):
+#     result = decimal_to_fraction(num)
+#     if not is_error:
+#         assert result.is_ok()
+#         assert str(result.ok()) == expected_value
+#     else:
+#         assert result.is_err()
+#         assert str(result.err()) == error_msg

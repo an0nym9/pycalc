@@ -4,8 +4,10 @@ from pycalc.utils.guards import handle_exception, enhance_params
 
 @handle_exception
 @enhance_params
-def sum(*args: tuple[float, ...],) -> float | float:
+def sum(*args: tuple[float, ...],) -> float | ValueError:
     """Find the sum of two numbers."""
+    if not args:
+        raise ValueError("No numbers provided.")
     num = args[0]
     if len(args) != 1:
         for i in range(1, len(args)):
@@ -14,8 +16,10 @@ def sum(*args: tuple[float, ...],) -> float | float:
 
 @handle_exception
 @enhance_params
-def difference(*args: tuple[float, ...],) -> float | float:
+def difference(*args: tuple[float, ...],) -> float | ValueError:
     """Find the difference of two numbers."""
+    if not args:
+        raise ValueError("No numbers provided.")
     num = args[0]
     if len(args) != 1:
         for i in range(1, len(args)):
@@ -24,8 +28,10 @@ def difference(*args: tuple[float, ...],) -> float | float:
 
 @handle_exception
 @enhance_params
-def product(*args: tuple[float, ...],) -> float | float:
+def product(*args: tuple[float, ...],) -> float | ValueError:
     """Find the product of two numbers."""
+    if not args:
+        raise ValueError("No numbers provided.")
     num = args[0]
     if len(args) != 1:
         for i in range(1, len(args)):
@@ -34,14 +40,19 @@ def product(*args: tuple[float, ...],) -> float | float:
 
 @handle_exception
 @enhance_params
-def qoutient(*args: tuple[float, ...],) -> float | ValueError:
+def qoutient(
+    *args: tuple[float, ...],
+    ignore_zero: bool = False
+) -> float | ValueError  | ZeroDivisionError:
     """Find the quotient of two numbers."""
+    if not args:
+        raise ValueError("No numbers provided.")
     num = args[0]
-    if len(args) != 1:
+    if num != 0 and len(args) != 1:
         for i in range(1, len(args)):
-            if args[i] == 0:
-                raise ValueError("Cannot divide by zero.")
-            num /= args[i]
+            if not ignore_zero and args[i] == 0:
+                raise ZeroDivisionError("Cannot divide by zero.")
+            num /= args[i if i != 0 else 1]
     return num
 
 def run_basic():

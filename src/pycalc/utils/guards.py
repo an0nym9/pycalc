@@ -60,7 +60,6 @@ def handle_exception(func: callable, /,) -> callable:
         try:
             return Result(func(*args, **kwargs,), True,)
         except Exception as err:
-            print(err)
             return Result(err, False,)
     return wrapper
 

@@ -33,8 +33,10 @@ class Fraction:
 
 @handle_exception
 @enhance_params
-def is_prime(n: int, /) -> bool:
+def is_prime(n: int | None = None, /) -> bool | ValueError:
     """Checks if the given number is prime."""
+    if not n:
+        raise ValueError("No number provided.")
     if n < 2:
         return False
     for i in range(2, n+1, ):
@@ -44,57 +46,84 @@ def is_prime(n: int, /) -> bool:
 
 @handle_exception
 @enhance_params
-def gen_primes(min: int, max: int, /) -> set:
+def gen_primes(
+    min_n: int | None = None,
+    max_n: int | None = None,
+    /,
+    *,
+    included: bool = True
+) -> set | ValueError:
     """Generates a sequence of prime numbers."""
-    if min > max:
+    if any(n is None for n in (min_n, max_n)):
+        raise ValueError("Missing a range.")
+    if min_n > max_n:
         return set()
     primes = set()
-    for num in range(min, max + 1):
+    for num in range(min_n, max_n + (1 if included else 0)):
         if is_prime(num):
             primes.add(num)
     return primes
 
 @handle_exception
 @enhance_params
-def gen_semi_primes(min: int, max: int, /) -> set:
+def gen_semi_primes(
+    min_n: int | None = None,
+    max_n: int | None = None,
+    /,
+    *,
+    included: bool = True
+) -> set:
     """Generates a sequence of semi prime numbers."""
-    if min > max:
+    if any(n is None for n in (min_n, max_n)):
+        raise ValueError("Missing a range.")
+    if min_n > max_n:
         return set()
     semi_primes = set()
-    for i in range(min, max+1):
-        for j in range(i, max+1):
-            num = i * j
-            if num > max:
+    primes = [
+        p
+        for p in range(2, max_n + (1 if included else 0))
+        if is_prime(p).unwrap()
+    ]
+    for i, p1 in enumerate(primes):
+        for p2 in primes[i:]:
+            num = p1 * p2
+            if num > max_n:
                 break
-            if is_prime(i) and is_prime(j):
+            if num >= min_n:
                 semi_primes.add(num)
     return semi_primes
 
 @handle_exception
 @enhance_params
-def is_semi_prime(n: int, /) -> bool:
+def is_semi_prime(n: int | None = None, /) -> bool | ValueError:
     """Checks if the given number is a semi prime number."""
+    if not n:
+        raise ValueError("No number provided.")
     if n < 4:
         return False
-    return n in gen_semi_primes(2, n).unwrap()
+    return n in gen_semi_primes(n, n+1).unwrap()
 
 @handle_exception
 @enhance_params
 def fraction_to_decimal(
-    whole_number: int,
-    numerator: int,
-    denominator: int,
+    whole_number: int | None = None,
+    numerator: int | None = None,
+    denominator: int | None = None,
     /,
 ) -> float | ValueError:
     """Convert into a decimal."""
+    if any(n is None for n in (whole_number, numerator, denominator)):
+        raise ValueError("Missing a number.")
     if denominator == 0:
         raise ValueError("Denominator cannot be zero.")
     return (whole_number * denominator +  numerator) / denominator
 
 @handle_exception
 @enhance_params
-def decimal_to_fraction(d: float, /) -> None:
+def decimal_to_fraction(d: float | None, /) -> None | ValueError:
     """Approximate to a fraction."""
+    if d is None:
+        raise ValueError("Input cannot be None.")
     power = 10 ** len(str(d).split('.')[-1])
     num = d * power
     divisible = set()

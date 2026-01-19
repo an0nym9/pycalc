@@ -21,7 +21,7 @@ class Fraction:
             f"{self.numerator} / {self.denominator}"
             if not self.whole_number else
             f"{self.whole_number} {f"{self.numerator} / {self.denominator}" if self.numerator != 0 else ''}"
-        )
+        ).strip()
 
     def get_numerator(self) -> int:
         """Return the numerator of the fraction."""
@@ -120,30 +120,34 @@ def fraction_to_decimal(
 
 @handle_exception
 @enhance_params
-def decimal_to_fraction(d: float | None, /) -> None | ValueError:
+def decimal_to_fraction(d: float | None = None, /) -> None | ValueError:
     """Approximate to a fraction."""
     if d is None:
         raise ValueError("Input cannot be None.")
-    power = 10 ** len(str(d).split('.')[-1])
+    power = 10 ** (len(s) if (s := str(d).split('.')[-1]) != '0' else 0)
     num = d * power
     divisible = set()
-    for n in range(2, int(num) + 1):
-        if num % n == 0 and (10 ** power) % n == 0:
-            divisible.add(n)
-    whole_number = 0
-    numerator = num / max(divisible) if divisible else num
-    denominator = power / max (divisible) if divisible else power
-    if denominator == 0:
-        raise ValueError("Denominator cannot be zero.")
-    if numerator > denominator:
-        whole_number = numerator // denominator
-        numerator = numerator % denominator
-    return Fraction(*tuple(map(int, (whole_number, numerator, denominator))))
+    if not is_prime(int(num)).unwrap_or(False):
+        for n in range(2, int(num) + 1):
+            if num % n == 0 and (10 ** power) % n == 0:
+                divisible.add(n)
+        whole_number = 0
+        numerator = num / max(divisible) if divisible else num
+        denominator = power / max (divisible) if divisible else power
+        if denominator == 0:
+            raise ValueError("Denominator cannot be zero.")
+        if numerator > denominator:
+            whole_number = numerator // denominator
+            numerator = numerator % denominator
+        return Fraction(*tuple(map(int, (whole_number, numerator, denominator))))
+    return Fraction(int(num), 0, 1)
 
 @handle_exception
 @enhance_params
-def factor(n: int, /) -> dict:
+def factor(n: int | None = None, /) -> dict | ValueError:
     """Factor the given number."""
+    if n is None:
+        raise ValueError("No number provided.")
     num = n
     factors = {}
     while num > 1:
@@ -155,8 +159,10 @@ def factor(n: int, /) -> dict:
 
 @handle_exception
 @enhance_params
-def lcm(*args,) -> int:
+def lcm(*args: tuple[int, ...],) -> int:
     """Find the Least Common Multiple."""
+    if len(args) == 0:
+        raise ValueError("No numbers provided.")
     nums = list(args)
     while True:
         for i in range(len(nums)):
@@ -168,8 +174,10 @@ def lcm(*args,) -> int:
 
 @handle_exception
 @enhance_params
-def gcd(*args,) -> int:
+def gcd(*args: tuple[int, ...],) -> int:
     """Find the Greatest Common Divisitor."""
+    if len(args) == 0:
+        raise ValueError("No numbers provided.")
     cd = [1,]
     for i in range(2, max(args)):
         for n in args:

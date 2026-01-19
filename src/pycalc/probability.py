@@ -4,8 +4,10 @@ from pycalc.utils.guards import handle_exception, enhance_params
 
 @handle_exception
 @enhance_params
-def factorial(n: int, /) -> int:
+def factorial(n: int | None = None, /) -> int | ValueError:
     """Find the factorial of 'n'."""
+    if n is None:
+        raise ValueError("No number provided.")
     if n in (0, 1):
         return 1
     res = n
@@ -15,14 +17,26 @@ def factorial(n: int, /) -> int:
 
 @handle_exception
 @enhance_params
-def permutations(a: int, b: int, /) -> int:
+def permutations(
+    a: int | None = None,
+    b: int | None = None,
+    /,
+) -> int | ValueError:
     """Find the permutations."""
+    if any(n is None for n in (a, b,)):
+        raise ValueError("Missing a number.")
     return factorial(a).unwrap() / factorial(a - b).unwrap()
 
 @handle_exception
 @enhance_params
-def combinations(a: int, b: int, /) -> int:
+def combinations(
+    a: int | None = None,
+    b: int | None = None,
+    /,
+) -> int | ValueError:
     """Find the combinations."""
+    if any(n is None for n in (a, b,)):
+        raise ValueError("Missing a number.")
     return factorial(a).unwrap() / (factorial(b).unwrap() * factorial(a - b).unwrap())
 
 @handle_exception

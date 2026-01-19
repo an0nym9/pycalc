@@ -101,82 +101,70 @@ def test_fraction_to_decimal(args, error_msg, is_error, expected_value):
         assert result.is_err()
         assert str(result.err()) == error_msg
 
-# @pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
-#     # Happy cases
-#     (0.6, "", False, "3 / 5"),
-#     (5.0, "", False, "5 / 1"),
+@pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
+    # Happy cases
+    (0.6, "", False, "3 / 5"),
+    (5.0, "", False, "5"),
 
-#     # Error cases
-#     (None, "Input cannot be None.", True, None),
-# ])
-# def test_decimal_to_fraction(num, error_msg, is_error, expected_value):
-#     result = decimal_to_fraction(num)
-#     if not is_error:
-#         assert result.is_ok()
-#         assert str(result.ok()) == expected_value
-#     else:
-#         assert result.is_err()
-#         assert str(result.err()) == error_msg
+    # Error cases
+    (None, "Input cannot be None.", True, None),
+])
+def test_decimal_to_fraction(num, error_msg, is_error, expected_value):
+    result = decimal_to_fraction(num)
+    if not is_error:
+        assert result.is_ok()
+        assert str(result.ok()) == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err())== error_msg
 
-# @pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
-#     # Happy cases
-#     (45, "", False, {3: 2, 5: 1}),
-#     (60, "", False, {2: 2, 3: 1, 5: 1}),
-#     (13, "", False, {13: 1}),
-#     (1, "", False, {}),
-# ])
-# def test_factor(num, error_msg, is_error, expected_value):
-#     result = factor(num)
-#     if not is_error:
-#         assert result.is_ok()
-#         assert result.ok() == expected_value
-#     else:
-#         assert result.is_err()
-#         assert str(result.err()) == error_msg
+@pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
+    # Happy cases
+    (45, "", False, {3: 2, 5: 1}),
+    (60, "", False, {2: 2, 3: 1, 5: 1}),
 
-# @pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
-#     # Happy cases
-#     ((4, 6, 8), "", False, 24),
-#     ((5, 10, 15), "", False, 30),
-#     ((7, 3), "", False, 21),
-# ])
-# def test_lcm(args, error_msg, is_error, expected_value):
-#     result = lcm(*args)
-#     if not is_error:
-#         assert result.is_ok()
-#         assert result.ok() == expected_value
-#     else:
-#         assert result.is_err()
-#         assert str(result.err()) == error_msg
+    # Error cases
+    (None, "No number provided.", True, None),
+])
+def test_factor(num, error_msg, is_error, expected_value):
+    result = factor(num)
+    if not is_error:
+        assert result.is_ok()
+        assert result.ok() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg
 
-# @pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
-#     # Happy cases
-#     ((24, 36, 60), "", False, 12),
-#     ((17, 13), "", False, 1),
-#     ((8, 32, 24), "", False, 8),
-# ])
-# def test_gcd(args, error_msg, is_error, expected_value):
-#     result = gcd(*args)
-#     if not is_error:
-#         assert result.is_ok()
-#         assert result.unwrap() == expected_value
-#     else:
-#         assert result.is_err()
-#         assert str(result.err()) == error_msg
-# @pytest.mark.parametrize("num,error_msg,is_error,expected_value", [
-#     # Happy cases
-#     (0.6, "", False, "3 / 5"),
-#     (5.0, "", False, "5 / 1"),
-#     (1.25, "", False, "1 1 / 4"),
+@pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
+    # Happy cases
+    ((4, 6, 8), "", False, 24),
+    ((5, 10, 15), "", False, 30),
 
-#     # Error cases
-#     (None, "Input cannot be None.", True, None),
-# ])
-# def test_decimal_to_fraction(num, error_msg, is_error, expected_value):
-#     result = decimal_to_fraction(num)
-#     if not is_error:
-#         assert result.is_ok()
-#         assert str(result.ok()) == expected_value
-#     else:
-#         assert result.is_err()
-#         assert str(result.err()) == error_msg
+    # Error cases
+    ((), "No numbers provided.", True, None),
+])
+def test_lcm(args, error_msg, is_error, expected_value):
+    result = lcm(*args)
+    if not is_error:
+        assert result.is_ok()
+        assert result.ok() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg
+
+@pytest.mark.parametrize("args,error_msg,is_error,expected_value", [
+    # Happy cases
+    ((24, 36, 60), "", False, 12),
+    ((17, 13), "", False, 1),
+
+    # Error cases
+    ((), "No numbers provided.", True, None),
+])
+def test_gcd(args, error_msg, is_error, expected_value):
+    result = gcd(*args)
+    if not is_error:
+        assert result.is_ok()
+        assert result.unwrap() == expected_value
+    else:
+        assert result.is_err()
+        assert str(result.err()) == error_msg

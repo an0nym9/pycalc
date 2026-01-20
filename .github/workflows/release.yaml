@@ -1,0 +1,46 @@
+name: Build Pycalc for Windows, macOS, and Linux
+
+on:
+    push:
+        tags:
+            - "v*.*.*"
+
+jobs:
+    build:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest, macos-latest]
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Python
+              id: setup-python
+              uses: actions/setup-python@v4
+              with:
+                  python-version: "3.11"
+
+            - name: Install Poetry
+              run: pip install poetry
+
+            - name: Configure Poetry Python
+              run: poetry env use ${{ steps.setup-python.outputs.python-path }}
+
+            - name: Install dependencies
+              run: poetry install --no-interaction --no-root --with dev
+
+            - name: Build executable
+              run: |
+                  poetry run pyinstaller \
+                    --clean \
+                    --onefile \
+                    src/pycalc/main.py \
+                    --name pycalc
+
+            - name: Upload executables
+              uses: actions/upload-artifact@v4
+              with:
+                  name: pycalc-${{ matrix.os }}
+                  path: dist/*

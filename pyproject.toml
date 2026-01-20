@@ -5,7 +5,7 @@ description = "A simple command-line calculator"
 authors = [{name="an0nym9"}]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.15"
 dependencies = [
 ]
 

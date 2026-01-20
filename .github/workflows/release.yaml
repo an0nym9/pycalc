@@ -32,12 +32,7 @@ jobs:
               run: poetry install --no-interaction --no-root --with dev
 
             - name: Build executable
-              run: |
-                  poetry run pyinstaller \
-                    --clean \
-                    --onefile \
-                    src/pycalc/main.py \
-                    --name pycalc
+              run: poetry run pyinstaller --clean --onefile src/pycalc/main.py --name pycalc
 
             - name: Upload executables
               uses: actions/upload-artifact@v4

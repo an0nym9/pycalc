@@ -28,6 +28,10 @@ Here are the features this program currently supports. If you need more details 
 * **Combinations**
 * **History**
 * **Evaluate Expressions**
+* **Get Coefficients**
+* **Get Terms**
+* **Get Variables**
+* **Get Type by Term**
 
 ## Installation
 

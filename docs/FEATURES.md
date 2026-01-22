@@ -194,3 +194,39 @@ tree = ast.parse(expr, mode="eval")
 res = eval_expr(tree.body).unwrap()
 print(f">> {res}")
 ```
+
+### Get Coefficients
+
+This returns the coefficients of the given polynomial expression. Example:
+
+```python
+poly = Polynomial("5x + 12")
+print(f"Coefficients: {poly.get_coeffs()}") # (5,)
+```
+
+### Get Terms
+
+This returns the terms of the given polynomial expression. Example:
+
+```python
+poly = Polynomial("12x + 3y - 6")
+print(f"Terms: {poly.get_terms()}") # ('12x', '3y', '6',)
+```
+
+### Get Variables
+
+This returns the variables of the given polynomial expression. Example:
+
+```python
+poly = Polynomial("6x + 2y - z")
+print(f"Variables: {poly.get_vars()}") # ('x', 'z', 'y')
+```
+
+### Get Type by Term
+
+Return the type of the polynomial expression using the terms. Example:
+
+```python
+poly = Polynomial("8x + 12")
+print(f"Type: {poly.get_type_by_term()}") # binomial
+```

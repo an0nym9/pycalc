@@ -9,7 +9,7 @@ class Fraction:
         numerator: int,
         denominator: int,
         /,
-    ) -> None | ValueError:
+    ) -> None:
         """Initialize a Fraction object."""
         self.whole_number = whole_number
         self.numerator = numerator

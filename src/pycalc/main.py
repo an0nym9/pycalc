@@ -6,13 +6,14 @@ from pycalc.utils.guards import handle_exception
 # from pycalc.utils.history import create_history, show_history
 from pycalc.basic import run_basic
 from pycalc.number import run_number
+from pycalc.algebra import run_algebra
 from pycalc.parser import eval_expr
 from pycalc.probability import run_probability
 
 @handle_exception
 def main() -> None:
     """Runs the main loop."""
-    options = ("basic", "number", "probability",)
+    options = ("basic", "number", "algebra", "probability",)
     while (
         clear_screen(),
         show_menu("Pycalc", options + ("exit",), capitalize_options=True).unwrap(),
@@ -26,6 +27,8 @@ def main() -> None:
                 run_basic()
             case "number":
                 run_number()
+            case "algebra":
+                run_algebra()
             case "probability":
                 run_probability()
             # case "history":

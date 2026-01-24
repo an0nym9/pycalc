@@ -31,11 +31,31 @@ class Polynomial:
             case _:
                 return "polynomial"
 
+    def get_type_by_degree(self) -> str:
+        """Return the type by using the degree of the given polynomial expression."""
+        if not re.search(r"[a-zA-Z]", self.exp):
+            return "constant"
+        degrees = re.findall(r"[a-zA-Z]+\^(\d+)|\d+[a-zA-Z]+\^(\d+)", self.exp)
+        max_degree =  max(list(map(int, [
+            s for s in (*degrees[0], '1',)
+            if s.strip() != '']))
+        ) if len(degrees) >= 1 else 1
+        match max_degree:
+            case 1:
+                return "linear"
+            case 2:
+                return "quadratic"
+            case 3:
+                return "cubic"
+            case _:
+                return "polynomial"
+
 def run_algebra() -> None:
     """Runs the main loop."""
     options = (
         "get coefficients", "get terms",
-        "get variables", "get type by term"
+        "get variables", "get type by term",
+        "get type by degree",
     )
     while (
          clear_screen(),
@@ -55,5 +75,7 @@ def run_algebra() -> None:
                 result = poly.get_vars()
             case "get type by term":
                 result = poly.get_type_by_term()
+            case "get type by degree":
+                result = poly.get_type_by_degree()
         print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()

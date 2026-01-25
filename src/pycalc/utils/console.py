@@ -16,6 +16,7 @@ def readline(
     attempts: int = 1,
     case_sensitive: bool = False,
     enter_only: bool = False,
+    allow_none: bool = False,
 ) -> any:
     """Reads user input and cast it into a specific type."""
     if cast not in (str, bool, float, int,):
@@ -33,6 +34,8 @@ def readline(
                 return False
             return cast(user_input)
         except ValueError:
+            if allow_none:
+                return None
             print(f"Invalid input, expecting of type '{cast.__name__}'.")
             attempts -= 1
     else:

@@ -7,6 +7,13 @@ A simple command-line calculator built in **Python**. This simple program allows
 > [!NOTE]
 > This program is still under development and still not production ready.
 
+## Table of Content
+
+* [Features](#features)
+* [Installation](#installation)
+* [Examples](#examples)
+* [License](#license)
+
 ## Features
 
 Here are the features this program currently supports. If you need more details click this [link](docs/FEATURES.md).
@@ -32,6 +39,8 @@ Here are the features this program currently supports. If you need more details 
 * **Get Terms**
 * **Get Variables**
 * **Get Type by Term**
+* **Get Type by Degree**
+* **Interest**
 
 ## Installation
 

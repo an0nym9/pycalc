@@ -5,6 +5,7 @@ from pycalc.utils.console import clear_screen, readline, show_menu, animateText
 from pycalc.utils.guards import handle_exception
 # from pycalc.utils.history import create_history, show_history
 from pycalc.basic import run_basic
+from pycalc.calculus import run_calculus
 from pycalc.finance import run_finance
 from pycalc.number import run_number
 from pycalc.algebra import run_algebra
@@ -15,9 +16,9 @@ from pycalc.probability import run_probability
 def main() -> None:
     """Runs the main loop."""
     options = (
-        "basic", "finance",
-        "number", "algebra",
-        "probability",
+        "basic", "calculus",
+        "finance", "number"
+        "algebra", "probability",
     )
     while (
         clear_screen(),
@@ -30,6 +31,8 @@ def main() -> None:
         match options[user_option-1]:
             case "basic":
                 run_basic()
+            case "calculus":
+                run_calculus()
             case "finance":
                 run_finance()
             case "number":

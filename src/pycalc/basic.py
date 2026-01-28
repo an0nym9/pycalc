@@ -64,11 +64,13 @@ def run_basic():
         "quotient": ('/', qoutient),
     }
     while (
-        clear_screen(),
-        show_menu("Basic", (option_keys := tuple(options.keys())) + ("exit",), capitalize_options=True),
-        user_option := readline("Enter your option (number):", cast=int).unwrap(),
-    )[-1] != len(options) + 1:
-        if not (1 <= user_option <= len(options)):
+        user_option := show_menu(
+            "Basic",
+            tuple(options.keys()) +  ("exit",),
+            capitalize_options=True,
+        ).unwrap(),
+    ) != "exit":
+        if user_option not in options.keys():
             print("Unknown option, try again.")
             continue
         nums = []
@@ -76,7 +78,7 @@ def run_basic():
         while length > 0:
             nums.append(readline("Enter a number:", cast=float).unwrap())
             length -= 1
-        option = options[option_keys[user_option-1]]
+        option = options[user_option]
         res = option[1](*nums).unwrap()
         print(f">> {res}")
         # add_history({

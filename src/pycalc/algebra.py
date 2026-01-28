@@ -58,15 +58,17 @@ def run_algebra() -> None:
         "get type by degree",
     )
     while (
-         clear_screen(),
-         show_menu("Algebra", options + ("exit",), capitalize_options=True),
-         user_option := readline("Enter your option (number):", cast=int).unwrap(),
-    )[-1] != len(options) + 1:
-        if not (1 <= user_option <= len(options)):
+         user_option := show_menu(
+            "Algebra",
+            options + ("exit",),
+            capitalize_options=True,
+        ).unwrap(),
+    ) != "exit":
+        if user_option not in options:
             print("Unknown option, try again.")
             continue
         poly = Polynomial(readline("Enter a polynomial:").unwrap()) # Assume user types a polynomial
-        match options[user_option-1]:
+        match user_option:
             case "get coefficients":
                 result = poly.get_coeffs()
             case "get terms":

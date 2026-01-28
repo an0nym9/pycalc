@@ -69,16 +69,18 @@ def run_calculus() -> None:
     """Runs the main loop."""
     options = ("arithmetic sequence", "arithmetic series", "arithmetic difference",)
     while (
-         clear_screen(),
-         show_menu("Finance", options + ("exit",), capitalize_options=True),
-         user_option := readline("Enter your option (number):", cast=int).unwrap(),
-    )[-1] != len(options) + 1:
-        if not (1 <= user_option <= len(options)):
+        user_option := show_menu(
+            "Finance",
+            options + ("exit",),
+            capitalize_options=True,
+        ).unwrap(),
+    ) != "exit":
+        if user_option not in options:
             print("Unknown option, try again.")
             continue
-        match (option := options[user_option-1]):
+        match user_option:
             case "arithmetic sequence" | "arithemtic series":
-                cond = option == "arithmetic series"
+                cond = user_option == "arithmetic series"
                 if cond:
                     sn = readline("Enter the value for S_n:", cast=float, allow_none=True).unwrap()
                 tn = readline("Enter the value for t_n:", cast=float, allow_none=True).unwrap()

@@ -200,11 +200,13 @@ def run_fraction_tools() -> None:
     """Runs fraction tools section."""
     options = ("proper fraction", "get numerator", "get denominator",)
     while (
-         clear_screen(),
-         show_menu("Factorial Tools", options + ("exit",), capitalize_options=True),
-         user_option := readline("Enter your option (number):", cast=int).unwrap(),
-    )[-1] != len(options) + 1:
-        if not (1 <= user_option <= len(options)):
+        user_option := show_menu(
+            "Factorial Tools",
+            options + ("exit",),
+            capitalize_options=True,
+        ).unwrap(),
+    ) != "exit":
+        if user_option not in options:
             print("Unknown option, try again.")
             continue
         whole_number = readline("Enter the whole number:", cast=int).unwrap()
@@ -213,7 +215,7 @@ def run_fraction_tools() -> None:
         if denominator == 0:
             print("Denominator cannot be zero, try again.")
             continue
-        match (option := options[user_option-1]):
+        match user_option:
             case "proper fraction":
                 if numerator < denominator:
                     print(f"{f"{whole_number} " if whole_number > 0 else ''}{numerator} / {denominator}")
@@ -223,7 +225,7 @@ def run_fraction_tools() -> None:
                 result = f"{new_whole_number if new_whole_number != 0 else ''} {f"{new_numerator} / {denominator}" if new_numerator != 0 else ''}"
             case "get numerator" | "get denominator":
                 fraction = Fraction(whole_number, numerator, denominator)
-                result = fraction.get_numerator() if option == "get numerator" else fraction.get_denominator()
+                result = fraction.get_numerator() if user_option == "get numerator" else fraction.get_denominator()
         # add_history({
         #     "Category": "Number - Fraction Tools",
         #     "Type": option.capitalize(),
@@ -248,20 +250,22 @@ def run_number():
         "fraction tools",
     )
     while (
-         clear_screen(),
-         show_menu("Number", options + ("exit",), capitalize_options=True),
-         user_option := readline("Enter your option (number):", cast=int).unwrap(),
-    )[-1] != len(options) + 1:
-        if not (1 <= user_option <= len(options)):
+        user_option := show_menu(
+            "Number",
+            options + ("exit",),
+            capitalize_options=True,
+        ).unwrap(),
+    ) != "exit":
+        if user_option not in options:
             print("Unknown option, try again.")
             continue
-        match (option := options[user_option-1]):
+        match user_option:
             case "check prime" | "check semi prime":
                 num = readline("Enter the number:", cast=int).unwrap()
                 if num < 0:
                     print("Cannot be negative.")
                     continue
-                result = is_prime(num).unwrap() if option == "check prime" else is_semi_prime(num).unwrap()
+                result = is_prime(num).unwrap() if user_option == "check prime" else is_semi_prime(num).unwrap()
                 # add_history({
                 #     "Category": "Number",
                 #     "Type": option.capitalize(),
@@ -274,7 +278,7 @@ def run_number():
                 if maximum < minimum:
                     print("Maximum cannot be smaller than minimum.")
                     continue
-                result = gen_primes(minimum, maximum).unwrap() if option == "generate prime sequence" else gen_semi_primes(minimum, maximum).unwrap()
+                result = gen_primes(minimum, maximum).unwrap() if user_option == "generate prime sequence" else gen_semi_primes(minimum, maximum).unwrap()
                 # add_history({
                 #     "Category": "Number",
                 #     "Type": option.capitalize(),
@@ -331,7 +335,7 @@ def run_number():
                 nums = set()
                 for num in range(length):
                     nums.add(readline("Enter the number:", cast=int).unwrap())
-                result = lcm(*nums).unwrap() if option == "least common multiple" else gcd(*nums).unwrap()
+                result = lcm(*nums).unwrap() if user_option == "least common multiple" else gcd(*nums).unwrap()
                 # add_history({
                 #     "Category": "Number",
                 #     "Type": option.capitalize(),

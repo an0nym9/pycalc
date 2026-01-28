@@ -43,11 +43,13 @@ def run_finance() -> None:
     """Runs the main loop."""
     options = ("simple", "compound",)
     while (
-         clear_screen(),
-         show_menu("Finance", options + ("exit",), capitalize_options=True),
-         user_option := readline("Enter your option (number):", cast=int).unwrap(),
-    )[-1] != len(options) + 1:
-        if not (1 <= user_option <= len(options)):
+        user_option := show_menu(
+            "Finance",
+            options + ("exit",),
+            capitalize_options=True,
+        ).unwrap(),
+    ) != "exit":
+        if user_option not in options:
             print("Unknown option, try again.")
             continue
         print("Enter space for no values.")

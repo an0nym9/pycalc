@@ -44,14 +44,16 @@ def run_probability() -> None:
     """Runs the main loop."""
     options = ("factorial", "permutations", "combinations",)
     while (
-        clear_screen(),
-        show_menu("Probability", options + ("exit",), capitalize_options=True),
-        user_option := readline("Enter your selected option (number):", cast=int).unwrap()
-    )[-1] != len(options) + 1:
-        if not (1 <= user_option <= len(options)):
+        user_option := show_menu(
+            "Probability",
+            options + ("exit",),
+            capitalize_options=True,
+        ).unwrap(),
+    ) != "exit":
+        if user_option not in options:
             print("Unknown option, try again.")
             continue
-        match (option := options[user_option-1]):
+        match user_option:
             case "factorial":
                 num = readline("Enter the number:", cast=int).unwrap()
                 if num < 0:
@@ -70,7 +72,7 @@ def run_probability() -> None:
                 if num2 > num1:
                     print("A non-permisble value")
                     continue
-                result = permutations(num1, num2).unwrap() if option == "permutations" else combinations(num1, num2).unwrap()
+                result = permutations(num1, num2).unwrap() if user_option == "permutations" else combinations(num1, num2).unwrap()
                 # add_history({
                 #     "Category": "Probability",
                 #     "Type": option.capitalize(),

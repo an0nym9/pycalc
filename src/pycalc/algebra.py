@@ -57,13 +57,11 @@ def run_algebra() -> None:
         "get variables", "get type by term",
         "get type by degree",
     )
-    while (
-         user_option := show_menu(
+    while (user_option := show_menu(
             "Algebra",
             options + ("exit",),
             capitalize_options=True,
-        ).unwrap(),
-    ) != "exit":
+        ).unwrap()) != "exit":
         if user_option not in options:
             print("Unknown option, try again.")
             continue

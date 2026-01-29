@@ -43,13 +43,11 @@ def combinations(
 def run_probability() -> None:
     """Runs the main loop."""
     options = ("factorial", "permutations", "combinations",)
-    while (
-        user_option := show_menu(
+    while (user_option := show_menu(
             "Probability",
             options + ("exit",),
             capitalize_options=True,
-        ).unwrap(),
-    ) != "exit":
+        ).unwrap()) != "exit":
         if user_option not in options:
             print("Unknown option, try again.")
             continue

@@ -63,13 +63,11 @@ def run_basic():
         "product": ('*', product),
         "quotient": ('/', qoutient),
     }
-    while (
-        user_option := show_menu(
+    while (user_option := show_menu(
             "Basic",
             tuple(options.keys()) +  ("exit",),
             capitalize_options=True,
-        ).unwrap(),
-    ) != "exit":
+        ).unwrap()) != "exit":
         if user_option not in options.keys():
             print("Unknown option, try again.")
             continue

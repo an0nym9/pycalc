@@ -42,13 +42,11 @@ def interest(
 def run_finance() -> None:
     """Runs the main loop."""
     options = ("simple", "compound",)
-    while (
-        user_option := show_menu(
+    while (user_option := show_menu(
             "Finance",
             options + ("exit",),
             capitalize_options=True,
-        ).unwrap(),
-    ) != "exit":
+        ).unwrap()) != "exit":
         if user_option not in options:
             print("Unknown option, try again.")
             continue
@@ -62,5 +60,3 @@ def run_finance() -> None:
         result = interest(I = I, P = P, r = r, t = t, n = n, compound=cond).unwrap()
         print(f">> {result:.2f}")
         readline("Press enter to continue...", enter_only=True).unwrap()
-
-

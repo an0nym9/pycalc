@@ -68,13 +68,11 @@ def arithmetic_difference(
 def run_calculus() -> None:
     """Runs the main loop."""
     options = ("arithmetic sequence", "arithmetic series", "arithmetic difference",)
-    while (
-        user_option := show_menu(
+    while (user_option := show_menu(
             "Finance",
             options + ("exit",),
             capitalize_options=True,
-        ).unwrap(),
-    ) != "exit":
+        ).unwrap()) != "exit":
         if user_option not in options:
             print("Unknown option, try again.")
             continue

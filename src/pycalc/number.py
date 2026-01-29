@@ -199,13 +199,11 @@ def remain(a: int, b: int, /) -> int | ValueError:
 def run_fraction_tools() -> None:
     """Runs fraction tools section."""
     options = ("proper fraction", "get numerator", "get denominator",)
-    while (
-        user_option := show_menu(
+    while (user_option := show_menu(
             "Factorial Tools",
             options + ("exit",),
             capitalize_options=True,
-        ).unwrap(),
-    ) != "exit":
+        ).unwrap()) != "exit":
         if user_option not in options:
             print("Unknown option, try again.")
             continue
@@ -249,13 +247,11 @@ def run_number():
         "greatest common divisitor", "get remainder",
         "fraction tools",
     )
-    while (
-        user_option := show_menu(
+    while (user_option := show_menu(
             "Number",
             options + ("exit",),
             capitalize_options=True,
-        ).unwrap(),
-    ) != "exit":
+        ).unwrap()) != "exit":
         if user_option not in options:
             print("Unknown option, try again.")
             continue

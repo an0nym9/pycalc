@@ -1,6 +1,8 @@
 import ast
 import sys
 
+from lupa import LuaRuntime
+
 from pycalc.utils.console import clear_screen, readline, show_menu, animateText
 from pycalc.utils.guards import handle_exception
 # from pycalc.utils.history import create_history, show_history
@@ -43,19 +45,21 @@ def main() -> None:
             # case "history":
             #     show_history()
         readline("Press enter to continue...", enter_only=True).unwrap()
-        print("true")
     animateText("Exited successfully...")
 
-if __name__ == "__main__":
+def cli() -> None:
     args = sys.argv[1:]
     if len(args) >= 1:
         if args[0] == "-tui":
             main().unwrap()
         elif args[0] == "-quick":
+            lua = LuaRuntime()
+            lua.execute(open("./resources/preprocess.lua").read())
             while clear_screen() or (expr := readline(">>>").unwrap().strip()) != "exit":
-                tree = ast.parse(expr, mode="eval")
+                preprocess = lua.eval(f'preprocess("{expr}")')
+                tree = ast.parse(preprocess, mode="eval")
                 res = eval_expr(tree.body)
-                print(f" > {res}")
+                print(f"= {res}")
                 readline("Press enter to continue...", enter_only=True).unwrap()
         elif args[0] in ("-V", "-version",):
             print("Pycalc version 0.0.5")
@@ -63,3 +67,6 @@ if __name__ == "__main__":
             print(f"Unknown argument, {args[0]}.")
     else:
         print(f"Expecting at least one argument, got {len(args)}.")
+
+if __name__ == "__main__":
+    cli()

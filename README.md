@@ -1,8 +1,12 @@
 # pycalc
 
-![Version](https://img.shields.io/badge/version-0.0.5-purple?style=flat-square) ![Python](https://img.shields.io/badge/python-3.14.0-blue?style=flat-square&logo=python&logoColor=white) ![Poetry](https://img.shields.io/badge/poetry-2.2.1-lightblue?style=flat-square&logo=poetry&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-2.2.1-orange?style=flat-square&logo=pytest&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+![Version](https://img.shields.io/badge/version-0.0.6-purple?style=flat-square) ![Python](https://img.shields.io/badge/python-3.14.0-blue?style=flat-square&logo=python&logoColor=white) ![Poetry](https://img.shields.io/badge/poetry-2.2.1-lightblue?style=flat-square&logo=poetry&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-2.2.1-orange?style=flat-square&logo=pytest&logoColor=white) ![Lua](https://img.shields.io/badge/lua-5.4.8-darkblue?style=flat-square&logo=lua&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
-A simple command-line calculator built in **Python**. This simple program allows you to do math in your terminal, while keeping it simple and user-friendly.
+<p align="center">
+  <img src="assets/pycalc-ascii-art.png" width="100%" />
+</p>
+
+A simple command-line calculator built in **Python** and **Lua**, design to compute complex math expressions in the terminal while keeping it simple and user-friendly.
 
 > [!NOTE]
 > This program is still under development and still not production ready.
@@ -46,10 +50,13 @@ Here are the features this program currently supports. If you need more details 
 
 Follow the steps to set up and run **Pycalc**:
 
+> [!NOTE]
+> Make sure you have Python and Lua installed before running the program.
+
 * **Clone the repository**
     ```bash
     git clone https://github.com/an0nym9/pycalc.git
-    cd clone
+    cd pycalc
     ```
 
 * **Install dependencies with Poetry**<br/>

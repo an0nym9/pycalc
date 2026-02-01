@@ -1,5 +1,6 @@
 import ast
 import sys
+import json
 
 from lupa import LuaRuntime
 
@@ -54,15 +55,21 @@ def cli() -> None:
             main().unwrap()
         elif args[0] == "-quick":
             lua = LuaRuntime()
-            lua.execute(open("./resources/preprocess.lua").read())
-            while clear_screen() or (expr := readline(">>>").unwrap().strip()) != "exit":
-                preprocess = lua.eval(f'preprocess("{expr}")')
-                tree = ast.parse(preprocess, mode="eval")
-                res = eval_expr(tree.body)
-                print(f"= {res}")
+            lua.execute(open("./resources/parser.lua").read())
+            lua.execute(open("./resources/lexer.lua").read())
+            while (clear_screen() or (
+                expr := readline("Type 'exit' and ENTER to quit the program\n>>").unwrap().strip()
+                ) != "exit"):
+                try:
+                    parse = lua.eval(f'parser(validate(lexer("{expr}")))')
+                    tree = ast.parse(parse, mode="eval")
+                    res = eval_expr(tree.body)
+                    print(f"= {res}")
+                except Exception:
+                    print("Syntax Error")
                 readline("Press enter to continue...", enter_only=True).unwrap()
         elif args[0] in ("-V", "-version",):
-            print("Pycalc version 0.0.5")
+            print("Pycalc version 0.0.6")
         else:
             print(f"Unknown argument, {args[0]}.")
     else:

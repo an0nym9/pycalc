@@ -23,12 +23,12 @@ def readline(
     if cast not in (str, bool, float, int,):
         raise ValueError(f"Unknown or unsupported type '{cast.__name__}'.")
     if enter_only:
-        print(msg, end='')
+        print(msg, end='', flush=True)
         if os.name == "nt":
             while True:
                 if msvcrt.kbhit():
                     key = msvcrt.getch()
-                    if key == b' ':
+                    if key in (b'\r', b' ',):
                         break
         else:
             import tty

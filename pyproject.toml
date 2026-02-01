@@ -1,6 +1,6 @@
 [project]
 name = "pycalc"
-version = "0.0.5"
+version = "0.0.6"
 description = "A simple command-line calculator"
 authors = [{name="an0nym9"}]
 license = {text = "MIT"}

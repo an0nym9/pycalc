@@ -6,7 +6,7 @@
   <img src="assets/pycalc-ascii-art.png" width="100%" />
 </p>
 
-A simple command-line calculator built in **Python** and **Lua**, design to compute complex math expressions in the terminal while keeping it simple and user-friendly.
+A simple command-line calculator built in **Python** and **Lua**, design to compute math expressions in the terminal while keeping it simple and user-friendly.
 
 > [!NOTE]
 > This program is still under development and still not production ready.

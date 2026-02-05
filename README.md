@@ -6,7 +6,7 @@
   <img src="assets/pycalc-ascii-art.png" width="100%" />
 </p>
 
-A simple command-line calculator built in **Python** and **Lua**, design to compute math expressions in the terminal while keeping it simple and user-friendly.
+A simple command-line calculator built in **Python** and **Lua** that evaluates math expressions directly in the terminal, with a focus of simplicity and ease of use.
 
 > [!NOTE]
 > This program is still under development and still not production ready.
@@ -45,6 +45,9 @@ Here are the features this program currently supports. If you need more details 
 * **Get Type by Term**
 * **Get Type by Degree**
 * **Interest**
+* **Arithmetic sequence**
+* **Arithmetic series**
+* **Arithmetic difference**
 
 ## Installation
 

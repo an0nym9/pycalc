@@ -97,21 +97,20 @@ Here are examples of calculations this program is capable of.
     |  [5] Fraction to decimal                         |
     |  [6] Decimal to fraction                         |
     |  [7] Factor                                      |
-    |  [8] Least common multiple                       |
+    | > [8] Least common multiple                      |
     |  [9] Greatest common divisitor                   |
     |  [10] Get remainder                              |
     |  [11] Fraction tools                             |
     |  [12] Exit                                       |
     |                                                  |
     +==================================================+
-    Enter your option (number): 8
     How many number would you like to add? 5
     Enter the number: 12
     Enter the number: 6
     Enter the number: 9
     Enter the number: 7
     Enter the number: 14
-    LCM: 252
+    >> 252
     Press enter to continue...
     ```
 
@@ -122,18 +121,18 @@ Here are examples of calculations this program is capable of.
     |                 Factorial Tools                  |
     +==================================================+
     |                                                  |
-    |  [1] Proper fraction                             |
+    | > [1] Proper fraction                            |
     |  [2] Get numerator                               |
     |  [3] Get denominator                             |
     |  [4] Exit                                        |
     |                                                  |
     +==================================================+
-    Enter your option (number): 1
     Enter the whole number: 0
     Enter the numerator: 432
     Enter the denominator: 54
-    Proper fraction: 8
+    >> 8
     Press enter to continue...
+
     ```
 
 ## License

@@ -1,6 +1,5 @@
 import ast
 import sys
-import json
 
 from lupa import LuaRuntime
 
@@ -20,7 +19,7 @@ def main() -> None:
     """Runs the main loop."""
     options = (
         "basic", "calculus",
-        "finance", "number"
+        "finance", "number",
         "algebra", "probability",
     )
     while (user_option := show_menu(

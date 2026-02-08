@@ -37,25 +37,24 @@ def load_history() -> list:
 
 @handle_exception
 @enhance_params
-def add_history(content: dict, /,) -> None:
+def add_history(content: str, /,) -> None:
     """Add content to history."""
     data = load_history()
     data.append({
-        "Time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "Content": content,
+        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "content": content,
     })
     with open(HISTORY_PATH, 'w') as f:
         json.dump(data, f, indent=4)
 
 @handle_exception
 @enhance_params
-def show_history(*, width: int = 100) -> None:
+def show_history() -> None:
     """Show previous history."""
     clear_screen()
     with open(HISTORY_PATH, 'r') as f:
         data = json.load(f)
-    print(f"+{'=' * width}+\n|{"History".center(width)}|\n+{'=' * width}+")
-    for history in data:
-        left = f"| [{history["Time"]}] "
-        print(f"{left}{str(history["Content"]["Result"]).ljust(width-len(left))} |")
-    print(f"+{'=' * width}+")
+    [[print(f"[ {history["time"]} ] {history["content"]}")
+    for history in data]
+    if data else
+    print("Nothing to show here... NO HISTORY")]

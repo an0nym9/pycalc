@@ -5,7 +5,7 @@ from lupa import LuaRuntime
 
 from pycalc.utils.console import clear_screen, readline, show_menu, animateText
 from pycalc.utils.guards import handle_exception
-# from pycalc.utils.history import create_history, show_history
+from pycalc.utils.history import create_history, add_history, show_history
 from pycalc.basic import run_basic
 from pycalc.calculus import run_calculus
 from pycalc.finance import run_finance
@@ -21,6 +21,7 @@ def main() -> None:
         "basic", "calculus",
         "finance", "number",
         "algebra", "probability",
+        "history",
     )
     while (user_option := show_menu(
             "Pycalc",
@@ -40,14 +41,15 @@ def main() -> None:
                 run_algebra()
             case "probability":
                 run_probability()
+            case "history":
+                show_history()
             case _:
                 print("Unknown option, try again.")
-            # case "history":
-            #     show_history()
         readline("Press enter to continue...", enter_only=True).unwrap()
     animateText("Exited successfully...")
 
 def cli() -> None:
+    create_history()
     args = sys.argv[1:]
     if len(args) >= 1:
         if args[0] == "-tui":
@@ -63,6 +65,7 @@ def cli() -> None:
                     parse = lua.eval(f'parser(validate(lexer("{expr}")))')
                     tree = ast.parse(parse, mode="eval")
                     res = eval_expr(tree.body)
+                    add_history(str(res))
                     print(f"= {res}")
                 except Exception:
                     print("Syntax Error")

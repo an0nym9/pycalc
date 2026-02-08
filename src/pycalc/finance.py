@@ -1,6 +1,7 @@
 import math
-from pycalc.utils.console import clear_screen, readline, show_menu
+from pycalc.utils.console import readline, show_menu
 from pycalc.utils.guards import handle_exception
+from pycalc.utils.history import add_history
 
 @handle_exception
 def interest(
@@ -58,5 +59,6 @@ def run_finance() -> None:
         t = readline("Enter the value for t:", cast=float, allow_none=True).unwrap()
         n = readline("Enter the value for n:", cast=float, allow_none=True).unwrap() if cond else None
         result = interest(I = I, P = P, r = r, t = t, n = n, compound=cond).unwrap()
+        add_history(str(result))
         print(f">> {result:.2f}")
         readline("Press enter to continue...", enter_only=True).unwrap()

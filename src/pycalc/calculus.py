@@ -1,5 +1,6 @@
-from pycalc.utils.console import clear_screen, readline, show_menu
+from pycalc.utils.console import readline, show_menu
 from pycalc.utils.guards import handle_exception
+from pycalc.utils.history import add_history
 
 @handle_exception
 def arithmetic_sequence(
@@ -94,5 +95,6 @@ def run_calculus() -> None:
                 tn1 = readline("Enter the value for t_n:", cast=float, allow_none=True).unwrap()
                 tn2 = readline("Enter the value for t_n-1:", cast=float, allow_none=True).unwrap()
                 result = arithmetic_difference(tn1=tn1, tn2=tn2).unwrap()
+        add_history(str(result))
         print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()

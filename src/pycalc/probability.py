@@ -1,6 +1,6 @@
-from pycalc.utils.console import clear_screen, readline, show_menu
+from pycalc.utils.console import readline, show_menu
 from pycalc.utils.guards import handle_exception, enhance_params
-# from pycalc.utils.history import add_history
+from pycalc.utils.history import add_history
 
 @handle_exception
 @enhance_params
@@ -58,12 +58,6 @@ def run_probability() -> None:
                     print("Cant factorial a negative number.")
                     continue
                 result = factorial(num).unwrap()
-                # add_history({
-                #     "Category": "Probability",
-                #     "Type": option.capitalize(),
-                #     "Arg": num,
-                #     "Result": result,
-                # })
             case "permutations" | "combinations":
                 num1 = readline("Enter the first number:", cast=int).unwrap()
                 num2 = readline("Enter the second number:", cast=int).unwrap()
@@ -71,11 +65,6 @@ def run_probability() -> None:
                     print("A non-permisble value")
                     continue
                 result = permutations(num1, num2).unwrap() if user_option == "permutations" else combinations(num1, num2).unwrap()
-                # add_history({
-                #     "Category": "Probability",
-                #     "Type": option.capitalize(),
-                #     "Args": [num1, num2],
-                #     "Result": result,
-                # })
+        add_history(str(result))
         print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()

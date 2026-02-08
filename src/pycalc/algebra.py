@@ -1,5 +1,6 @@
 import re
-from pycalc.utils.console import clear_screen, readline, show_menu
+from pycalc.utils.console import readline, show_menu
+from pycalc.utils.history import add_history
 
 class Polynomial:
     def __init__(self, exp: str) -> None:
@@ -77,5 +78,6 @@ def run_algebra() -> None:
                 result = poly.get_type_by_term()
             case "get type by degree":
                 result = poly.get_type_by_degree()
+        add_history(str(result))
         print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()

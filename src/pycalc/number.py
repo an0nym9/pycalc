@@ -31,6 +31,42 @@ class Fraction:
         """Returns the denominator of the fraction."""
         return self.denominator
 
+class SigFigs:
+    def __init__(self, num: int | float, /) -> None:
+        """Initialize SigFigs object."""
+        self.num = str(float(num))
+
+    def count(self, /) -> int:
+        """Count the number of sigfigs."""
+        l, r = self.num.split('.')
+        if r.count("0") != len(r):
+            if not l == "0":
+                return len(l) + len(r)
+            return len(r)
+        if l.count("0") != 0:
+            return len([
+                n
+                for i in range(0, len(l))
+                if ((n := l[i]) in map(chr, range(ord("1"), ord("9"))) or
+                l[-1] != "0")
+            ])
+        return 0
+
+    def proper(self, /) -> str:
+        """Return the proper sigfig."""
+        l = list(self.num)
+        i = l.index('.')
+        while l[0] in ("0", ".",):
+            if i <= 0:
+                i -= 1
+            if l[0] == ".":
+                i *= -1
+            l.pop(0)
+        if "." in l:
+            l.remove(".")
+        l.insert(1, '.')
+        return ''.join(l) + f"E{i-1 if i >=0 else i}"
+
 @handle_exception
 @enhance_params
 def is_prime(n: int | None = None, /) -> bool | ValueError:
@@ -228,7 +264,31 @@ def run_fraction_tools() -> None:
         print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()
 
-def run_number():
+@handle_exception
+def run_sigfigs() -> None:
+    options = ("count", "proper",)
+    while (user_option := show_menu(
+            "Significant Figures",
+            options + ("exit",),
+            capitalize_options=True,
+        ).unwrap()) != "exit":
+        if user_option not in options:
+            print("Unknown option, try again.")
+            continue
+        sf = SigFigs(readline(
+            "Enter a number:",
+            cast=float,
+        ).unwrap())
+        match user_option:
+            case "count":
+                result = sf.count()
+            case "proper":
+                result = sf.proper()
+        add_history(str(result))
+        print(f">> {result}")
+        readline("Press enter to continue...", enter_only=True).unwrap()
+
+def run_number() -> None:
     """Runs the main loop."""
     options = (
         "check prime", "check semi prime",
@@ -236,7 +296,7 @@ def run_number():
         "fraction to decimal", "decimal to fraction",
         "factor", "least common multiple",
         "greatest common divisitor", "get remainder",
-        "fraction tools",
+        "fraction tools", "significant figures"
     )
     while (user_option := show_menu(
             "Number",
@@ -291,7 +351,9 @@ def run_number():
                 num2 = readline("Enter the second number:", cast=int).unwrap()
                 result = remain(num1, num2).unwrap()
             case "fraction tools":
-                run_fraction_tools()
+                run_fraction_tools().unwrap()
+            case "significant figures":
+                run_sigfigs().unwrap()
         add_history(str(result))
         print(f">> {result}")
         readline("Press enter to continue...", enter_only=True).unwrap()

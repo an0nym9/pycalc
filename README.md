@@ -48,6 +48,9 @@ Here are the features this program currently supports. If you need more details 
 * **Arithmetic sequence**
 * **Arithmetic series**
 * **Arithmetic difference**
+* **Significant Figures**
+    * **Count**
+    * **Proper**
 
 ## Installation
 

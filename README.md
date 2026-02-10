@@ -6,12 +6,12 @@
   <img src="assets/pycalc-ascii-art.png" width="100%" />
 </p>
 
-A simple command-line calculator built in **Python** and **Lua** that evaluates math expressions directly in the terminal, with a focus of simplicity and ease of use.
+A simple command-line calculator built with **Python** and **Lua** that evaluates mathematical expressions directly in the terminal, with a focus on simplicity and ease of use.
 
 > [!NOTE]
-> This program is still under development and still not production ready.
+> This project is still under active development and is **not yet production-ready**.
 
-## Table of Content
+## Table of Contents
 
 * [Features](#features)
 * [Installation](#installation)
@@ -20,123 +20,132 @@ A simple command-line calculator built in **Python** and **Lua** that evaluates 
 
 ## Features
 
-Here are the features this program currently supports. If you need more details click this [link](docs/FEATURES.md).
+Below are the features currently supported by this program. For more detailed explanations, see the [Features documentation](docs/FEATURES.md).
 
 * **Basic Arithmetic** (`+`, `-`, `*`, `/`)
-* **Prime / Semi Prime Checker**
-* **Generate Prime / Semi Prime Sequence**
-* **Fraction to Decimal**
-* **Decimal to Fraction**
-* **Factor**
-* **Least Common Multiple**
-* **Greatest Common Divisitor**
-* **Get Remainder**
+* **Prime / Semiprime Checker**
+* **Prime / Semiprime Sequence Generator**
+* **Fraction to Decimal Conversion**
+* **Decimal to Fraction Conversion**
+* **Factorization**
+* **Least Common Multiple (LCM)**
+* **Greatest Common Divisor (GCD)**
+* **Remainder Calculation**
 * **Fraction Tools**
-    * **Proper Funciton**
-    * **Get Numerator / Denominator**
+
+  * **Convert to Proper Fraction**
+  * **Get Numerator / Denominator**
 * **Factorial**
 * **Permutations**
 * **Combinations**
-* **History**
-* **Evaluate Expressions**
-* **Get Coefficients**
-* **Get Terms**
-* **Get Variables**
-* **Get Type by Term**
-* **Get Type by Degree**
-* **Interest**
-* **Arithmetic sequence**
-* **Arithmetic series**
-* **Arithmetic difference**
+* **Calculation History**
+* **Expression Evaluation**
+* **Polynomial Utilities**
+
+  * **Get Coefficients**
+  * **Get Terms**
+  * **Get Variables**
+  * **Determine Type by Term**
+  * **Determine Type by Degree**
+* **Interest Calculations**
+* **Arithmetic Sequences**
+* **Arithmetic Series**
+* **Arithmetic Difference**
 * **Significant Figures**
-    * **Count**
-    * **Proper**
+
+  * **Count**
+  * **Convert to Proper Form**
 
 ## Installation
 
-Follow the steps to set up and run **Pycalc**:
+Follow the steps below to set up and run **Pycalc**.
 
 > [!NOTE]
-> Make sure you have Python and Lua installed before running the program.
+> Ensure that **Python** and **Lua** are installed before running the program.
 
-* **Clone the repository**
-    ```bash
-    git clone https://github.com/an0nym9/pycalc.git
-    cd pycalc
-    ```
+### 1. Clone the Repository
 
-* **Install dependencies with Poetry**<br/>
-    Make sure you have Poetry installed (tested with 2.2.1)
-    ```bash
-    poetry install
-    ```
+```bash
+git clone https://github.com/an0nym9/pycalc.git
+cd pycalc
+```
 
-* **Run Pycalc**
-    ```bash
-    poetry run pycalc
-    ```
+### 2. Install Dependencies Using Poetry
 
-* **Running tests with Pytest**<br/>
-    Make sure Pytest is installed (tested with 9.0.2)
-    ```bash
-    poetry run pytest
-    ```
+Make sure Poetry is installed (tested with version **2.2.1**).
+
+```bash
+poetry install
+```
+
+### 3. Run Pycalc
+
+```bash
+poetry run pycalc
+```
+
+### 4. Run Tests (Optional)
+
+Make sure Pytest is installed (tested with version **9.0.2**).
+
+```bash
+poetry run pytest
+```
 
 ## Examples
 
-Here are examples of calculations this program is capable of.
+Below are a few examples of what this program can do.
 
-* Example of the program calculating the **LCM** of `12`, `6`, `9`, `7`, and `14`:
+### Example: Calculating the LCM of `12`, `6`, `9`, `7`, and `14`
 
-    ```txt
-    +==================================================+
-    |                      Number                      |
-    +==================================================+
-    |                                                  |
-    |  [1] Check prime                                 |
-    |  [2] Check semi prime                            |
-    |  [3] Generate prime sequence                     |
-    |  [4] Generate semi prime sequence                |
-    |  [5] Fraction to decimal                         |
-    |  [6] Decimal to fraction                         |
-    |  [7] Factor                                      |
-    | > [8] Least common multiple                      |
-    |  [9] Greatest common divisitor                   |
-    |  [10] Get remainder                              |
-    |  [11] Fraction tools                             |
-    |  [12] Exit                                       |
-    |                                                  |
-    +==================================================+
-    How many number would you like to add? 5
-    Enter the number: 12
-    Enter the number: 6
-    Enter the number: 9
-    Enter the number: 7
-    Enter the number: 14
-    >> 252
-    Press enter to continue...
-    ```
+```txt
++==================================================+
+|                      Number                      |
++==================================================+
+|                                                  |
+|  [1] Check prime                                 |
+|  [2] Check semiprime                             |
+|  [3] Generate prime sequence                     |
+|  [4] Generate semiprime sequence                 |
+|  [5] Fraction to decimal                         |
+|  [6] Decimal to fraction                         |
+|  [7] Factor                                      |
+| > [8] Least common multiple                      |
+|  [9] Greatest common divisor                     |
+|  [10] Get remainder                              |
+|  [11] Fraction tools                             |
+|  [12] Exit                                       |
+|                                                  |
++==================================================+
+How many numbers would you like to add? 5
+Enter the number: 12
+Enter the number: 6
+Enter the number: 9
+Enter the number: 7
+Enter the number: 14
+>> 252
+Press enter to continue...
+```
 
-* Example of converting `432 / 54` to a proper fraction:
+### Example: Converting `432 / 54` to a Proper Fraction
 
-    ```txt
-    +==================================================+
-    |                 Factorial Tools                  |
-    +==================================================+
-    |                                                  |
-    | > [1] Proper fraction                            |
-    |  [2] Get numerator                               |
-    |  [3] Get denominator                             |
-    |  [4] Exit                                        |
-    |                                                  |
-    +==================================================+
-    Enter the whole number: 0
-    Enter the numerator: 432
-    Enter the denominator: 54
-    >> 8
-    Press enter to continue...
-
-    ```
+```txt
++==================================================+
+|                Fraction Tools                    |
++==================================================+
+|                                                  |
+| > [1] Proper fraction                            |
+|  [2] Get numerator                               |
+|  [3] Get denominator                             |
+|  [4] Exit                                        |
+|                                                  |
++==================================================+
+Enter the whole number: 0
+Enter the numerator: 432
+Enter the denominator: 54
+>> 8
+Press enter to continue...
+```
 
 ## License
 

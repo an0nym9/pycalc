@@ -6,7 +6,7 @@
   <img src="assets/pycalc-ascii-art.png" width="100%" />
 </p>
 
-A simple command-line calculator built with **Python** and **Lua** that evaluates mathematical expressions directly in the terminal, with a focus on simplicity and ease of use.
+A simple command-line calculator built with **Python** and **Lua** that evaluates both mathematical and chemical expressions directly in the terminal, designed for simplicity and ease of use.
 
 > [!NOTE]
 > This project is still under active development and is **not yet production-ready**.
@@ -55,6 +55,7 @@ Below are the features currently supported by this program. For more detailed ex
 
   * **Count**
   * **Convert to Proper Form**
+* **Chemistry Support** (commign soon)
 
 ## Installation
 

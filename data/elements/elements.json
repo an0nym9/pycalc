@@ -1,0 +1,946 @@
+{
+    "H": {
+        "name": "Hydrogen",
+        "atomic number": 1,
+        "protons": 1,
+        "neutrons": 0,
+        "electrons": 1,
+        "atomic mass": 1.008
+    },
+    "He": {
+        "name": "Helium",
+        "atomic number": 2,
+        "protons": 2,
+        "neutrons": 2,
+        "electrons": 2,
+        "atomic mass": 4.0026
+    },
+    "Li": {
+        "name": "Lithium",
+        "atomic number": 3,
+        "protons": 3,
+        "neutrons": 4,
+        "electrons": 3,
+        "atomic mass": 6.94
+    },
+    "Be": {
+        "name": "Beryllium",
+        "atomic number": 4,
+        "protons": 4,
+        "neutrons": 5,
+        "electrons": 4,
+        "atomic mass": 9.0122
+    },
+    "B": {
+        "name": "Boron",
+        "atomic number": 5,
+        "protons": 5,
+        "neutrons": 6,
+        "electrons": 5,
+        "atomic mass": 10.81
+    },
+    "C": {
+        "name": "Carbon",
+        "atomic number": 6,
+        "protons": 6,
+        "neutrons": 6,
+        "electrons": 6,
+        "atomic mass": 12.011
+    },
+    "N": {
+        "name": "Nitrogen",
+        "atomic number": 7,
+        "protons": 7,
+        "neutrons": 7,
+        "electrons": 7,
+        "atomic mass": 14.007
+    },
+    "O": {
+        "name": "Oxygen",
+        "atomic number": 8,
+        "protons": 8,
+        "neutrons": 8,
+        "electrons": 8,
+        "atomic mass": 15.999
+    },
+    "F": {
+        "name": "Fluorine",
+        "atomic number": 9,
+        "protons": 9,
+        "neutrons": 10,
+        "electrons": 9,
+        "atomic mass": 18.998
+    },
+    "Ne": {
+        "name": "Neon",
+        "atomic number": 10,
+        "protons": 10,
+        "neutrons": 10,
+        "electrons": 10,
+        "atomic mass": 20.180
+    },
+    "Na": {
+        "name": "Sodium",
+        "atomic number": 11,
+        "protons": 11,
+        "neutrons": 12,
+        "electrons": 11,
+        "atomic mass": 22.990
+    },
+    "Mg": {
+        "name": "Magnesium",
+        "atomic number": 12,
+        "protons": 12,
+        "neutrons": 12,
+        "electrons": 12,
+        "atomic mass": 24.305
+    },
+    "Al": {
+        "name": "Aluminum",
+        "atomic number": 13,
+        "protons": 13,
+        "neutrons": 14,
+        "electrons": 13,
+        "atomic mass": 26.982
+    },
+    "Si": {
+        "name": "Silicon",
+        "atomic number": 14,
+        "protons": 14,
+        "neutrons": 14,
+        "electrons": 14,
+        "atomic mass": 28.085
+    },
+    "P": {
+        "name": "Phosphorus",
+        "atomic number": 15,
+        "protons": 15,
+        "neutrons": 16,
+        "electrons": 15,
+        "atomic mass": 30.974
+    },
+    "S": {
+        "name": "Sulfur",
+        "atomic number": 16,
+        "protons": 16,
+        "neutrons": 16,
+        "electrons": 16,
+        "atomic mass": 32.06
+    },
+    "Cl": {
+        "name": "Chlorine",
+        "atomic number": 17,
+        "protons": 17,
+        "neutrons": 18,
+        "electrons": 17,
+        "atomic mass": 35.45
+    },
+    "Ar": {
+        "name": "Argon",
+        "atomic number": 18,
+        "protons": 18,
+        "neutrons": 22,
+        "electrons": 18,
+        "atomic mass": 39.948
+    },
+    "K": {
+        "name": "Potassium",
+        "atomic number": 19,
+        "protons": 19,
+        "neutrons": 20,
+        "electrons": 19,
+        "atomic mass": 39.098
+    },
+    "Ca": {
+        "name": "Calcium",
+        "atomic number": 20,
+        "protons": 20,
+        "neutrons": 20,
+        "electrons": 20,
+        "atomic mass": 40.078
+    },
+    "Sc": {
+        "name": "Scandium",
+        "atomic number": 21,
+        "protons": 21,
+        "neutrons": 24,
+        "electrons": 21,
+        "atomic mass": 44.956
+    },
+    "Ti": {
+        "name": "Titanium",
+        "atomic number": 22,
+        "protons": 22,
+        "neutrons": 26,
+        "electrons": 22,
+        "atomic mass": 47.867
+    },
+    "V": {
+        "name": "Vanadium",
+        "atomic number": 23,
+        "protons": 23,
+        "neutrons": 28,
+        "electrons": 23,
+        "atomic mass": 50.942
+    },
+    "Cr": {
+        "name": "Chromium",
+        "atomic number": 24,
+        "protons": 24,
+        "neutrons": 28,
+        "electrons": 24,
+        "atomic mass": 51.996
+    },
+    "Mn": {
+        "name": "Manganese",
+        "atomic number": 25,
+        "protons": 25,
+        "neutrons": 30,
+        "electrons": 25,
+        "atomic mass": 54.938
+    },
+    "Fe": {
+        "name": "Iron",
+        "atomic number": 26,
+        "protons": 26,
+        "neutrons": 30,
+        "electrons": 26,
+        "atomic mass": 55.845
+    },
+    "Co": {
+        "name": "Cobalt",
+        "atomic number": 27,
+        "protons": 27,
+        "neutrons": 32,
+        "electrons": 27,
+        "atomic mass": 58.933
+    },
+    "Ni": {
+        "name": "Nickel",
+        "atomic number": 28,
+        "protons": 28,
+        "neutrons": 31,
+        "electrons": 28,
+        "atomic mass": 58.693
+    },
+    "Cu": {
+        "name": "Copper",
+        "atomic number": 29,
+        "protons": 29,
+        "neutrons": 35,
+        "electrons": 29,
+        "atomic mass": 63.546
+    },
+    "Zn": {
+        "name": "Zinc",
+        "atomic number": 30,
+        "protons": 30,
+        "neutrons": 35,
+        "electrons": 30,
+        "atomic mass": 65.38
+    },
+    "Ga": {
+        "name": "Gallium",
+        "atomic number": 31,
+        "protons": 31,
+        "neutrons": 39,
+        "electrons": 31,
+        "atomic mass": 69.723
+    },
+    "Ge": {
+        "name": "Germanium",
+        "atomic number": 32,
+        "protons": 32,
+        "neutrons": 41,
+        "electrons": 32,
+        "atomic mass": 72.630
+    },
+    "As": {
+        "name": "Arsenic",
+        "atomic number": 33,
+        "protons": 33,
+        "neutrons": 42,
+        "electrons": 33,
+        "atomic mass": 74.922
+    },
+    "Se": {
+        "name": "Selenium",
+        "atomic number": 34,
+        "protons": 34,
+        "neutrons": 45,
+        "electrons": 34,
+        "atomic mass": 78.971
+    },
+    "Br": {
+        "name": "Bromine",
+        "atomic number": 35,
+        "protons": 35,
+        "neutrons": 45,
+        "electrons": 35,
+        "atomic mass": 79.904
+    },
+    "Kr": {
+        "name": "Krypton",
+        "atomic number": 36,
+        "protons": 36,
+        "neutrons": 48,
+        "electrons": 36,
+        "atomic mass": 83.798
+    },
+    "Rb": {
+        "name": "Rubidium",
+        "atomic number": 37,
+        "protons": 37,
+        "neutrons": 48,
+        "electrons": 37,
+        "atomic mass": 85.468
+    },
+    "Sr": {
+        "name": "Strontium",
+        "atomic number": 38,
+        "protons": 38,
+        "neutrons": 50,
+        "electrons": 38,
+        "atomic mass": 87.62
+    },
+    "Y": {
+        "name": "Yttrium",
+        "atomic number": 39,
+        "protons": 39,
+        "neutrons": 50,
+        "electrons": 39,
+        "atomic mass": 88.906
+    },
+    "Zr": {
+        "name": "Zirconium",
+        "atomic number": 40,
+        "protons": 40,
+        "neutrons": 51,
+        "electrons": 40,
+        "atomic mass": 91.224
+    },
+    "Nb": {
+        "name": "Niobium",
+        "atomic number": 41,
+        "protons": 41,
+        "neutrons": 52,
+        "electrons": 41,
+        "atomic mass": 92.906
+    },
+    "Mo": {
+        "name": "Molybdenum",
+        "atomic number": 42,
+        "protons": 42,
+        "neutrons": 54,
+        "electrons": 42,
+        "atomic mass": 95.95
+    },
+    "Tc": {
+        "name": "Technetium",
+        "atomic number": 43,
+        "protons": 43,
+        "neutrons": 55,
+        "electrons": 43,
+        "atomic mass": 98
+    },
+    "Ru": {
+        "name": "Ruthenium",
+        "atomic number": 44,
+        "protons": 44,
+        "neutrons": 57,
+        "electrons": 44,
+        "atomic mass": 101.07
+    },
+    "Rh": {
+        "name": "Rhodium",
+        "atomic number": 45,
+        "protons": 45,
+        "neutrons": 58,
+        "electrons": 45,
+        "atomic mass": 102.91
+    },
+    "Pd": {
+        "name": "Palladium",
+        "atomic number": 46,
+        "protons": 46,
+        "neutrons": 60,
+        "electrons": 46,
+        "atomic mass": 106.42
+    },
+    "Ag": {
+        "name": "Silver",
+        "atomic number": 47,
+        "protons": 47,
+        "neutrons": 61,
+        "electrons": 47,
+        "atomic mass": 107.87
+    },
+    "Cd": {
+        "name": "Cadmium",
+        "atomic number": 48,
+        "protons": 48,
+        "neutrons": 64,
+        "electrons": 48,
+        "atomic mass": 112.41
+    },
+    "In": {
+        "name": "Indium",
+        "atomic number": 49,
+        "protons": 49,
+        "neutrons": 66,
+        "electrons": 49,
+        "atomic mass": 114.82
+    },
+    "Sn": {
+        "name": "Tin",
+        "atomic number": 50,
+        "protons": 50,
+        "neutrons": 69,
+        "electrons": 50,
+        "atomic mass": 118.71
+    },
+    "Sb": {
+        "name": "Antimony",
+        "atomic number": 51,
+        "protons": 51,
+        "neutrons": 71,
+        "electrons": 51,
+        "atomic mass": 121.76
+    },
+    "Te": {
+        "name": "Tellurium",
+        "atomic number": 52,
+        "protons": 52,
+        "neutrons": 76,
+        "electrons": 52,
+        "atomic mass": 127.60
+    },
+    "I": {
+        "name": "Iodine",
+        "atomic number": 53,
+        "protons": 53,
+        "neutrons": 74,
+        "electrons": 53,
+        "atomic mass": 126.90
+    },
+    "Xe": {
+        "name": "Xenon",
+        "atomic number": 54,
+        "protons": 54,
+        "neutrons": 77,
+        "electrons": 54,
+        "atomic mass": 131.29
+    },
+    "Cs": {
+        "name": "Cesium",
+        "atomic number": 55,
+        "protons": 55,
+        "neutrons": 78,
+        "electrons": 55,
+        "atomic mass": 132.91
+    },
+    "Ba": {
+        "name": "Barium",
+        "atomic number": 56,
+        "protons": 56,
+        "neutrons": 81,
+        "electrons": 56,
+        "atomic mass": 137.33
+    },
+    "La": {
+        "name": "Lanthanum",
+        "atomic number": 57,
+        "protons": 57,
+        "neutrons": 82,
+        "electrons": 57,
+        "atomic mass": 138.91
+    },
+    "Ce": {
+        "name": "Cerium",
+        "atomic number": 58,
+        "protons": 58,
+        "neutrons": 82,
+        "electrons": 58,
+        "atomic mass": 140.12
+    },
+    "Pr": {
+        "name": "Praseodymium",
+        "atomic number": 59,
+        "protons": 59,
+        "neutrons": 82,
+        "electrons": 59,
+        "atomic mass": 140.91
+    },
+    "Nd": {
+        "name": "Neodymium",
+        "atomic number": 60,
+        "protons": 60,
+        "neutrons": 84,
+        "electrons": 60,
+        "atomic mass": 144.24
+    },
+    "Pm": {
+        "name": "Promethium",
+        "atomic number": 61,
+        "protons": 61,
+        "neutrons": 84,
+        "electrons": 61,
+        "atomic mass": 145
+    },
+    "Sm": {
+        "name": "Samarium",
+        "atomic number": 62,
+        "protons": 62,
+        "neutrons": 88,
+        "electrons": 62,
+        "atomic mass": 150.36
+    },
+    "Eu": {
+        "name": "Europium",
+        "atomic number": 63,
+        "protons": 63,
+        "neutrons": 89,
+        "electrons": 63,
+        "atomic mass": 151.96
+    },
+    "Gd": {
+        "name": "Gadolinium",
+        "atomic number": 64,
+        "protons": 64,
+        "neutrons": 93,
+        "electrons": 64,
+        "atomic mass": 157.25
+    },
+    "Tb": {
+        "name": "Terbium",
+        "atomic number": 65,
+        "protons": 65,
+        "neutrons": 94,
+        "electrons": 65,
+        "atomic mass": 158.93
+    },
+    "Dy": {
+        "name": "Dysprosium",
+        "atomic number": 66,
+        "protons": 66,
+        "neutrons": 97,
+        "electrons": 66,
+        "atomic mass": 162.50
+    },
+    "Ho": {
+        "name": "Holmium",
+        "atomic number": 67,
+        "protons": 67,
+        "neutrons": 98,
+        "electrons": 67,
+        "atomic mass": 164.93
+    },
+    "Er": {
+        "name": "Erbium",
+        "atomic number": 68,
+        "protons": 68,
+        "neutrons": 99,
+        "electrons": 68,
+        "atomic mass": 167.26
+    },
+    "Tm": {
+        "name": "Thulium",
+        "atomic number": 69,
+        "protons": 69,
+        "neutrons": 100,
+        "electrons": 69,
+        "atomic mass": 168.93
+    },
+    "Yb": {
+        "name": "Ytterbium",
+        "atomic number": 70,
+        "protons": 70,
+        "neutrons": 103,
+        "electrons": 70,
+        "atomic mass": 173.05
+    },
+    "Lu": {
+        "name": "Lutetium",
+        "atomic number": 71,
+        "protons": 71,
+        "neutrons": 104,
+        "electrons": 71,
+        "atomic mass": 174.97
+    },
+    "Hf": {
+        "name": "Hafnium",
+        "atomic number": 72,
+        "protons": 72,
+        "neutrons": 106,
+        "electrons": 72,
+        "atomic mass": 178.49
+    },
+    "Ta": {
+        "name": "Tantalum",
+        "atomic number": 73,
+        "protons": 73,
+        "neutrons": 108,
+        "electrons": 73,
+        "atomic mass": 180.95
+    },
+    "W": {
+        "name": "Tungsten",
+        "atomic number": 74,
+        "protons": 74,
+        "neutrons": 110,
+        "electrons": 74,
+        "atomic mass": 183.84
+    },
+    "Re": {
+        "name": "Rhenium",
+        "atomic number": 75,
+        "protons": 75,
+        "neutrons": 111,
+        "electrons": 75,
+        "atomic mass": 186.21
+    },
+    "Os": {
+        "name": "Osmium",
+        "atomic number": 76,
+        "protons": 76,
+        "neutrons": 114,
+        "electrons": 76,
+        "atomic mass": 190.23
+    },
+    "Ir": {
+        "name": "Iridium",
+        "atomic number": 77,
+        "protons": 77,
+        "neutrons": 115,
+        "electrons": 77,
+        "atomic mass": 192.22
+    },
+    "Pt": {
+        "name": "Platinum",
+        "atomic number": 78,
+        "protons": 78,
+        "neutrons": 117,
+        "electrons": 78,
+        "atomic mass": 195.08
+    },
+    "Au": {
+        "name": "Gold",
+        "atomic number": 79,
+        "protons": 79,
+        "neutrons": 118,
+        "electrons": 79,
+        "atomic mass": 196.97
+    },
+    "Hg": {
+        "name": "Mercury",
+        "atomic number": 80,
+        "protons": 80,
+        "neutrons": 121,
+        "electrons": 80,
+        "atomic mass": 200.59
+    },
+    "Tl": {
+        "name": "Thallium",
+        "atomic number": 81,
+        "protons": 81,
+        "neutrons": 123,
+        "electrons": 81,
+        "atomic mass": 204.38
+    },
+    "Pb": {
+        "name": "Lead",
+        "atomic number": 82,
+        "protons": 82,
+        "neutrons": 125,
+        "electrons": 82,
+        "atomic mass": 207.2
+    },
+    "Bi": {
+        "name": "Bismuth",
+        "atomic number": 83,
+        "protons": 83,
+        "neutrons": 126,
+        "electrons": 83,
+        "atomic mass": 208.98
+    },
+    "Po": {
+        "name": "Polonium",
+        "atomic number": 84,
+        "protons": 84,
+        "neutrons": 125,
+        "electrons": 84,
+        "atomic mass": 209
+    },
+    "At": {
+        "name": "Astatine",
+        "atomic number": 85,
+        "protons": 85,
+        "neutrons": 125,
+        "electrons": 85,
+        "atomic mass": 210
+    },
+    "Rn": {
+        "name": "Radon",
+        "atomic number": 86,
+        "protons": 86,
+        "neutrons": 136,
+        "electrons": 86,
+        "atomic mass": 222
+    },
+    "Fr": {
+        "name": "Francium",
+        "atomic number": 87,
+        "protons": 87,
+        "neutrons": 136,
+        "electrons": 87,
+        "atomic mass": 223
+    },
+    "Ra": {
+        "name": "Radium",
+        "atomic number": 88,
+        "protons": 88,
+        "neutrons": 138,
+        "electrons": 88,
+        "atomic mass": 226
+    },
+    "Ac": {
+        "name": "Actinium",
+        "atomic number": 89,
+        "protons": 89,
+        "neutrons": 138,
+        "electrons": 89,
+        "atomic mass": 227
+    },
+    "Th": {
+        "name": "Thorium",
+        "atomic number": 90,
+        "protons": 90,
+        "neutrons": 142,
+        "electrons": 90,
+        "atomic mass": 232.04
+    },
+    "Pa": {
+        "name": "Protactinium",
+        "atomic number": 91,
+        "protons": 91,
+        "neutrons": 140,
+        "electrons": 91,
+        "atomic mass": 231.04
+    },
+    "U": {
+        "name": "Uranium",
+        "atomic number": 92,
+        "protons": 92,
+        "neutrons": 146,
+        "electrons": 92,
+        "atomic mass": 238.03
+    },
+    "Np": {
+        "name": "Neptunium",
+        "atomic number": 93,
+        "protons": 93,
+        "neutrons": 144,
+        "electrons": 93,
+        "atomic mass": 237
+    },
+    "Pu": {
+        "name": "Plutonium",
+        "atomic number": 94,
+        "protons": 94,
+        "neutrons": 150,
+        "electrons": 94,
+        "atomic mass": 244
+    },
+    "Am": {
+        "name": "Americium",
+        "atomic number": 95,
+        "protons": 95,
+        "neutrons": 148,
+        "electrons": 95,
+        "atomic mass": 243
+    },
+    "Cm": {
+        "name": "Curium",
+        "atomic number": 96,
+        "protons": 96,
+        "neutrons": 151,
+        "electrons": 96,
+        "atomic mass": 247
+    },
+    "Bk": {
+        "name": "Berkelium",
+        "atomic number": 97,
+        "protons": 97,
+        "neutrons": 150,
+        "electrons": 97,
+        "atomic mass": 247
+    },
+    "Cf": {
+        "name": "Californium",
+        "atomic number": 98,
+        "protons": 98,
+        "neutrons": 153,
+        "electrons": 98,
+        "atomic mass": 251
+    },
+    "Es": {
+        "name": "Einsteinium",
+        "atomic number": 99,
+        "protons": 99,
+        "neutrons": 153,
+        "electrons": 99,
+        "atomic mass": 252
+    },
+    "Fm": {
+        "name": "Fermium",
+        "atomic number": 100,
+        "protons": 100,
+        "neutrons": 157,
+        "electrons": 100,
+        "atomic mass": 257
+    },
+    "Md": {
+        "name": "Mendelevium",
+        "atomic number": 101,
+        "protons": 101,
+        "neutrons": 157,
+        "electrons": 101,
+        "atomic mass": 258
+    },
+    "No": {
+        "name": "Nobelium",
+        "atomic number": 102,
+        "protons": 102,
+        "neutrons": 157,
+        "electrons": 102,
+        "atomic mass": 259
+    },
+    "Lr": {
+        "name": "Lawrencium",
+        "atomic number": 103,
+        "protons": 103,
+        "neutrons": 157,
+        "electrons": 103,
+        "atomic mass": 262
+    },
+    "Rf": {
+        "name": "Rutherfordium",
+        "atomic number": 104,
+        "protons": 104,
+        "neutrons": 157,
+        "electrons": 104,
+        "atomic mass": 267
+    },
+    "Db": {
+        "name": "Dubnium",
+        "atomic number": 105,
+        "protons": 105,
+        "neutrons": 157,
+        "electrons": 105,
+        "atomic mass": 268
+    },
+    "Sg": {
+        "name": "Seaborgium",
+        "atomic number": 106,
+        "protons": 106,
+        "neutrons": 160,
+        "electrons": 106,
+        "atomic mass": 271
+    },
+    "Bh": {
+        "name": "Bohrium",
+        "atomic number": 107,
+        "protons": 107,
+        "neutrons": 161,
+        "electrons": 107,
+        "atomic mass": 270
+    },
+    "Hs": {
+        "name": "Hassium",
+        "atomic number": 108,
+        "protons": 108,
+        "neutrons": 162,
+        "electrons": 108,
+        "atomic mass": 277
+    },
+    "Mt": {
+        "name": "Meitnerium",
+        "atomic number": 109,
+        "protons": 109,
+        "neutrons": 163,
+        "electrons": 109,
+        "atomic mass": 278
+    },
+    "Ds": {
+        "name": "Darmstadtium",
+        "atomic number": 110,
+        "protons": 110,
+        "neutrons": 161,
+        "electrons": 110,
+        "atomic mass": 281
+    },
+    "Rg": {
+        "name": "Roentgenium",
+        "atomic number": 111,
+        "protons": 111,
+        "neutrons": 161,
+        "electrons": 111,
+        "atomic mass": 282
+    },
+    "Cn": {
+        "name": "Copernicium",
+        "atomic number": 112,
+        "protons": 112,
+        "neutrons": 173,
+        "electrons": 112,
+        "atomic mass": 285
+    },
+    "Nh": {
+        "name": "Nihonium",
+        "atomic number": 113,
+        "protons": 113,
+        "neutrons": 165,
+        "electrons": 113,
+        "atomic mass": 286
+    },
+    "Fl": {
+        "name": "Flerovium",
+        "atomic number": 114,
+        "protons": 114,
+        "neutrons": 175,
+        "electrons": 114,
+        "atomic mass": 289
+    },
+    "Mc": {
+        "name": "Moscovium",
+        "atomic number": 115,
+        "protons": 115,
+        "neutrons": 173,
+        "electrons": 115,
+        "atomic mass": 288
+    },
+    "Lv": {
+        "name": "Livermorium",
+        "atomic number": 116,
+        "protons": 116,
+        "neutrons": 177,
+        "electrons": 116,
+        "atomic mass": 293
+    },
+    "Ts": {
+        "name": "Tennessine",
+        "atomic number": 117,
+        "protons": 117,
+        "neutrons": 177,
+        "electrons": 117,
+        "atomic mass": 294
+    },
+    "Og": {
+        "name": "Oganesson",
+        "atomic number": 118,
+        "protons": 118,
+        "neutrons": 176,
+        "electrons": 118,
+        "atomic mass": 294
+    }
+}

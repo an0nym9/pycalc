@@ -42,7 +42,7 @@ def add_history(content: str, /,) -> None:
     data = load_history()
     data.append({
         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "content": content,
+        "result": content,
     })
     with open(HISTORY_PATH, 'w') as f:
         json.dump(data, f, indent=4)
@@ -54,7 +54,7 @@ def show_history() -> None:
     clear_screen()
     with open(HISTORY_PATH, 'r') as f:
         data = json.load(f)
-    [[print(f"[ {history["time"]} ] {history["content"]}")
+    [[print(f"[ {history["time"]} ] {history["result"]}")
     for history in data]
     if data else
     print("Nothing to show here... NO HISTORY")]

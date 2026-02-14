@@ -20,42 +20,50 @@ A simple command-line calculator built with **Python** and **Lua** that evaluate
 
 ## Features
 
-Below are the features currently supported by this program. For more detailed explanations, see the [Features documentation](docs/FEATURES.md).
+Below are the features currently supported. For detailed explanations, see the [Features documentation](docs/FEATURES.md).
 
-* **Basic Arithmetic** (`+`, `-`, `*`, `/`)
-* **Prime / Semiprime Checker**
-* **Prime / Semiprime Sequence Generator**
-* **Fraction to Decimal Conversion**
-* **Decimal to Fraction Conversion**
-* **Factorization**
-* **Least Common Multiple (LCM)**
-* **Greatest Common Divisor (GCD)**
-* **Remainder Calculation**
-* **Fraction Tools**
+### Core Math
+* Basic Arithmetic (`+`, `-`, `*`, `/`)
+* Expression Evaluation
+* Calculation History
+* Remainder Calculation
+* Factorial
+* Permutations
+* Combinations
 
-  * **Convert to Proper Fraction**
-  * **Get Numerator / Denominator**
-* **Factorial**
-* **Permutations**
-* **Combinations**
-* **Calculation History**
-* **Expression Evaluation**
-* **Polynomial Utilities**
+### Number Theory
+* Prime Checker
+* Semiprime Checker
+* Prime Sequence Generator
+* Semiprime Sequence Generator
+* Factorization
+* Least Common Multiple (LCM)
+* Greatest Common Divisor (GCD)
 
-  * **Get Coefficients**
-  * **Get Terms**
-  * **Get Variables**
-  * **Determine Type by Term**
-  * **Determine Type by Degree**
-* **Interest Calculations**
-* **Arithmetic Sequences**
-* **Arithmetic Series**
-* **Arithmetic Difference**
-* **Significant Figures**
+### Fractions
+* Fraction → Decimal Conversion
+* Decimal → Fraction Conversion
+* Convert to Proper Fraction
+* Get Numerator / Denominator
 
-  * **Count**
-  * **Convert to Proper Form**
-* **Chemistry Support** (commign soon)
+### Polynomials
+* Get Coefficients
+* Get Terms
+* Get Variables
+* Determine Type by Term
+* Determine Type by Degree
+
+### Sequences & Finance
+* Arithmetic Sequences
+* Arithmetic Series
+* Arithmetic Difference
+* Interest Calculations
+
+### Scientific Tools
+- Significant Figures
+  * Count
+  * Convert to Proper Form
+* Chemistry Support *(coming soon)*
 
 ## Installation
 

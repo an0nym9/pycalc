@@ -47,7 +47,7 @@ class SigFigs:
             return len([
                 n
                 for i in range(0, len(l))
-                if ((n := l[i]) in map(chr, range(ord("1"), ord("9"))) or
+                if ((n := l[i]) in map(str, range(1, 10)) or
                 l[-1] != "0")
             ])
         return 0
@@ -275,10 +275,7 @@ def run_sigfigs() -> None:
         if user_option not in options:
             print("Unknown option, try again.")
             continue
-        sf = SigFigs(readline(
-            "Enter a number:",
-            cast=float,
-        ).unwrap())
+        sf = SigFigs(readline("Enter a number:", cast=float).unwrap())
         match user_option:
             case "count":
                 result = sf.count()

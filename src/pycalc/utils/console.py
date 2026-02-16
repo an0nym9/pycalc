@@ -30,15 +30,6 @@ def readline(
                     key = msvcrt.getch()
                     if key in (b'\r', b' ',):
                         break
-        else:
-            import tty
-            import termios
-            fd = sys.stdin.fileno()
-            old_settings = termios.tcgetattr(fd)
-            while True:
-                key = sys.stdin.read(1)
-                if key == b' ':
-                    break
         return None
     while attempts != 0:
         user_input = input(f"{msg} ").strip()
@@ -108,11 +99,3 @@ def show_menu(
                     case b's':
                         s += 1
                 draw()
-        else:
-            key = sys.stdin.read(1)
-            if key == b'\x1b':
-                key += sys.stdin.read(2)
-                s += 1 if key == '\1xb[A' else -1
-                draw()
-                if key == b'\x1b':
-                    return options[s % len(options)]

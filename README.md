@@ -8,6 +8,8 @@
 
 A simple command-line calculator built with **Python** and **Lua** that evaluates both mathematical and chemical expressions directly in the terminal, designed for simplicity and ease of use.
 
+Learn more on the [PyCalc website](https://an0nym9.github.io/pycalc/).
+
 > [!NOTE]
 > This project is still under active development and is **not yet production-ready**.
 

@@ -67,6 +67,12 @@ Below are the features currently supported. For detailed explanations, see the [
   * Convert to Proper Form
 * Chemistry Support *(coming soon)*
 
+## Requirements
+
+* **Python 3.11+**
+* **Lua 5.4+**
+* **Poetry 2.2+**
+
 ## Installation
 
 Follow the steps below to set up and run **Pycalc**.

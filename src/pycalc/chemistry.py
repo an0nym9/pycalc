@@ -36,21 +36,60 @@ class Element:
         self.protons = Element.elements[symbol]["protons"]
         self.neutrons = Element.elements[symbol]["neutrons"]
         self.atomic_mass = Element.elements[symbol]["atomic mass"]
-        print(self.name)
 
     def __add__(self, other: Element, /) -> str:
         """Add two Element objects and balance."""
         if self.protons == other.protons:
             return f"{self.symbol}{other.symbol}"
-        fel = f"{self.symbol}{f"_{other.protons}" if other.protons != 1 else ''}"
-        sel = f"{other.symbol}{f"_{self.protons}" if self.protons != 1 else ''}"
+        fel = f"{self.symbol}{f"_{valence}" if (valence := other.get_valence()) != 1 else ''}"
+        sel = f"{other.symbol}{f"_{valence}" if (valence := self.get_valence()) != 1 else ''}"
         return fel + sel
+
+    def is_diatomic(self) -> bool:
+        """Checks if the element is diatomic."""
+        return self.symbol in ('O', 'H', 'N', 'F', 'Cl', 'Br', 'I',)
+
+    def get_valence(self) -> int:
+        """Get the total valence electrons."""
+        if self.protons <= 2: # period 1
+            return self.protons
+        elif self.protons <= 10: # period 2
+            return self.protons - 2
+        elif self.protons <= 18: # period 3
+            return self.protons - 10
+        elif self.protons <= 26: # period 4
+            return self.protons - 18
+        elif self.protons <= 32: # period 5
+            return self.protons - 26
+        elif self.protons <= 40: # period 6
+            return self.protons - 32
+        elif self.protons <= 48: # period 7
+            return self.protons - 40
+
+    def get_period(self, /) -> int:
+        """Get the period of the Element object."""
+        if self.atomic_number in (1, 2):
+            return 1
+        elif self.atomic_number in tuple(range(3, 11)):
+            return 2
+        elif self.atomic_number in tuple(range(11, 19)):
+            return 3
+        elif self.atomic_number in tuple(range(19, 37)):
+            return 4
+        elif self.atomic_number in tuple(range(37, 55)):
+            return 5
+        elif self.atomic_number in tuple(range(55, 87)):
+            return 6
+        elif self.atomic_number in tuple(range(87, 199)):
+            return 7
 
 def run_chemistry():
     """Runs the main loop."""
     options = (
-        "get name", "get atomic number", "get protons",
-        "get neutrons", "get atomic mass", "balance",
+        "get name", "get atomic number",
+        "get protons", "get neutrons",
+        "get atomic mass", "get valence electrons",
+        "get period", "balance",
     )
     while (user_option := show_menu(
             "Chemistry",
@@ -77,10 +116,14 @@ def run_chemistry():
                     result = element.neutrons
                 case "get atomic mass":
                     result = element.atomic_mass
+                case "get valence electrons":
+                    result = element.get_valence()
+                case "get period":
+                    result = element.get_period()
         elif user_option == "balance":
             symbol1 = readline("Enter the first element symbol:").unwrap()
             symbol2 = readline("Enter the second element symbol:").unwrap()
-            if not symbol1 or not symbol2:
+            if not valid_element(symbol1) or not valid_element(symbol2):
                 print("Atleast one of the element doesn't exist, try again.")
                 continue
             result = Element(symbol1) + Element(symbol2)

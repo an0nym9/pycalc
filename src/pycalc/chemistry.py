@@ -66,6 +66,46 @@ class Element:
         elif self.protons <= 48: # period 7
             return self.protons - 40
 
+    def get_group(self, /) -> int:
+        """Get the group or family of the Element object."""
+        n = self.atomic_number
+        if self.atomic_number in (1, 3, 11, 19, 37, 55, 87):
+            return 1
+        elif self.atomic_number in (4, 12, 20, 38, 56, 88):
+            return 2
+        elif n in (21, 39, *range(57, 72), *range(89, 104)):
+            return 3
+        elif n in (22, 40, 72, 104):
+            return 4
+        elif n in (23, 41, 73, 105):
+            return 5
+        elif n in (24, 42, 74, 106):
+            return 6
+        elif n in (25, 43, 75, 107):
+            return 7
+        elif n in (26, 44, 76, 108):
+            return 8
+        elif n in (27, 45, 77, 109):
+            return 9
+        elif n in (28, 46, 78, 110):
+            return 10
+        elif n in (29, 47, 79, 111):
+            return 11
+        elif n in (30, 48, 80, 112):
+            return 12
+        elif n in (5, 13, 31, 49, 81, 113):
+            return 13
+        elif n in (6, 14, 32, 50, 82, 114):
+            return 14
+        elif n in (7, 15, 33, 51, 83, 115):
+            return 15
+        elif n in (8, 16, 34, 52, 84, 116):
+            return 16
+        elif n in (9, 17, 35, 53, 85, 117):
+            return 17
+        elif n in (2, 10, 18, 36, 54, 86, 118):
+            return 18
+
     def get_period(self, /) -> int:
         """Get the period of the Element object."""
         if self.atomic_number in (1, 2):
@@ -89,7 +129,8 @@ def run_chemistry():
         "get name", "get atomic number",
         "get protons", "get neutrons",
         "get atomic mass", "get valence electrons",
-        "get period", "balance",
+        "get group", "get period",
+        "balance",
     )
     while (user_option := show_menu(
             "Chemistry",
@@ -118,6 +159,8 @@ def run_chemistry():
                     result = element.atomic_mass
                 case "get valence electrons":
                     result = element.get_valence()
+                case "get group":
+                    result = element.get_group()
                 case "get period":
                     result = element.get_period()
         elif user_option == "balance":

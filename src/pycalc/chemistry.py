@@ -68,60 +68,36 @@ class Element:
 
     def get_group(self, /) -> int:
         """Get the group or family of the Element object."""
-        n = self.atomic_number
-        if self.atomic_number in (1, 3, 11, 19, 37, 55, 87):
-            return 1
-        elif self.atomic_number in (4, 12, 20, 38, 56, 88):
-            return 2
-        elif n in (21, 39, *range(57, 72), *range(89, 104)):
-            return 3
-        elif n in (22, 40, 72, 104):
-            return 4
-        elif n in (23, 41, 73, 105):
-            return 5
-        elif n in (24, 42, 74, 106):
-            return 6
-        elif n in (25, 43, 75, 107):
-            return 7
-        elif n in (26, 44, 76, 108):
-            return 8
-        elif n in (27, 45, 77, 109):
-            return 9
-        elif n in (28, 46, 78, 110):
-            return 10
-        elif n in (29, 47, 79, 111):
-            return 11
-        elif n in (30, 48, 80, 112):
-            return 12
-        elif n in (5, 13, 31, 49, 81, 113):
-            return 13
-        elif n in (6, 14, 32, 50, 82, 114):
-            return 14
-        elif n in (7, 15, 33, 51, 83, 115):
-            return 15
-        elif n in (8, 16, 34, 52, 84, 116):
-            return 16
-        elif n in (9, 17, 35, 53, 85, 117):
-            return 17
-        elif n in (2, 10, 18, 36, 54, 86, 118):
-            return 18
+        print("Called")
+        ranges = (
+            (1, 3, 11, 19, 37, 55, 87), (4, 12, 20, 38, 56, 88),
+            (21, 39, range(57, 72), range(89, 104)), (22, 40, 72, 104),
+            (23, 41, 73, 105), (24, 42, 74, 106),
+            (25, 43, 75, 107), (26, 44, 76, 108),
+            (27, 45, 77, 109), (28, 46, 78, 110),
+            (29, 47, 79, 111), (30, 48, 80, 112),
+            (5, 13, 31, 49, 81, 113), (6, 14, 32, 50, 82, 114),
+            (7, 15, 33, 51, 83, 115), (8, 16, 34, 52, 84, 116),
+            (9, 17, 35, 53, 85, 117),  (2, 10, 18, 36, 54, 86, 118),
+        )
+        print("Called2")
+        for i, r in enumerate(ranges, start=1):
+            if self.atomic_number in r:
+                return i
+        return -1
 
     def get_period(self, /) -> int:
         """Get the period of the Element object."""
-        if self.atomic_number in (1, 2):
-            return 1
-        elif self.atomic_number in tuple(range(3, 11)):
-            return 2
-        elif self.atomic_number in tuple(range(11, 19)):
-            return 3
-        elif self.atomic_number in tuple(range(19, 37)):
-            return 4
-        elif self.atomic_number in tuple(range(37, 55)):
-            return 5
-        elif self.atomic_number in tuple(range(55, 87)):
-            return 6
-        elif self.atomic_number in tuple(range(87, 199)):
-            return 7
+        ranges = (
+            (1, 2), tuple(range(3, 11)),
+            tuple(range(11, 19)), tuple(range(19, 37)),
+            tuple(range(37, 55)), tuple(range(55, 87)),
+            tuple(range(87, 199)),
+        )
+        for i, r in enumerate(ranges, start=1):
+            if self.atomic_number in r:
+                return i
+        return -1
 
 def run_chemistry():
     """Runs the main loop."""

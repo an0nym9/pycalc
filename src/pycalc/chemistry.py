@@ -37,13 +37,12 @@ class Element:
         self.neutrons = Element.elements[symbol]["neutrons"]
         self.atomic_mass = Element.elements[symbol]["atomic mass"]
 
+    def __str__(self) -> str:
+        return self.symbol
+
     def __add__(self, other: Element, /) -> str:
-        """Add two Element objects and balance."""
-        if self.protons == other.protons:
-            return f"{self.symbol}{other.symbol}"
-        fel = f"{self.symbol}{f"_{valence}" if (valence := other.get_valence()) != 1 else ''}"
-        sel = f"{other.symbol}{f"_{valence}" if (valence := self.get_valence()) != 1 else ''}"
-        return fel + sel
+        """Add two Element objects."""
+        return Compound(self.symbol, other.symbol)
 
     def is_diatomic(self) -> bool:
         """Checks if the element is diatomic."""
@@ -51,24 +50,23 @@ class Element:
 
     def get_valence(self) -> int:
         """Get the total valence electrons."""
-        if self.protons <= 2: # period 1
-            return self.protons
-        elif self.protons <= 10: # period 2
-            return self.protons - 2
-        elif self.protons <= 18: # period 3
-            return self.protons - 10
-        elif self.protons <= 26: # period 4
-            return self.protons - 18
-        elif self.protons <= 32: # period 5
-            return self.protons - 26
-        elif self.protons <= 40: # period 6
-            return self.protons - 32
-        elif self.protons <= 48: # period 7
-            return self.protons - 40
+        group = self.get_group()
+        if group <= 12:
+            return group
+        return group - 10
+
+    def get_type(self) -> str:
+        """Get the type ion of the Element object."""
+        valence = self.get_valence()
+        if self.get_group() != 14:
+            if valence in range(1, 4):
+                return "cation"
+            elif valence in range(5, 9):
+                return "anion"
+        return str()
 
     def get_group(self, /) -> int:
         """Get the group or family of the Element object."""
-        print("Called")
         ranges = (
             (1, 3, 11, 19, 37, 55, 87), (4, 12, 20, 38, 56, 88),
             (21, 39, range(57, 72), range(89, 104)), (22, 40, 72, 104),
@@ -80,7 +78,6 @@ class Element:
             (7, 15, 33, 51, 83, 115), (8, 16, 34, 52, 84, 116),
             (9, 17, 35, 53, 85, 117),  (2, 10, 18, 36, 54, 86, 118),
         )
-        print("Called2")
         for i, r in enumerate(ranges, start=1):
             if self.atomic_number in r:
                 return i
@@ -99,6 +96,10 @@ class Element:
                 return i
         return -1
 
+class Compound:
+    def __init__(self, *elements: tuple[Element, ...]) -> None:
+        self.elememts = elements
+
 def run_chemistry():
     """Runs the main loop."""
     options = (
@@ -106,7 +107,7 @@ def run_chemistry():
         "get protons", "get neutrons",
         "get atomic mass", "get valence electrons",
         "get group", "get period",
-        "balance",
+        "get type", "balance",
     )
     while (user_option := show_menu(
             "Chemistry",
@@ -139,6 +140,8 @@ def run_chemistry():
                     result = element.get_group()
                 case "get period":
                     result = element.get_period()
+                case "get type":
+                    result = element.get_type()
         elif user_option == "balance":
             symbol1 = readline("Enter the first element symbol:").unwrap()
             symbol2 = readline("Enter the second element symbol:").unwrap()
@@ -149,3 +152,8 @@ def run_chemistry():
         print(f"= {result}")
         add_history(result)
         readline("Press enter to continue...", enter_only=True).unwrap()
+
+def test():
+    H = Element('H')
+    O = Element('O')
+    N = H + O

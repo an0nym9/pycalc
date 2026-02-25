@@ -62,10 +62,15 @@ Below are the features currently supported. For detailed explanations, see the [
 * Interest Calculations
 
 ### Scientific Tools
-- Significant Figures
+* Significant Figures
   * Count
   * Convert to Proper Form
-* Chemistry Support *(coming soon)*
+* Chemistry Support
+  * Validate Element
+  * Identify Diatomic Elements
+  * Determine Valence
+  * Identify Ion Type
+  * Find Group or Period
 
 ## Requirements
 

@@ -152,8 +152,3 @@ def run_chemistry():
         print(f"= {result}")
         add_history(result)
         readline("Press enter to continue...", enter_only=True).unwrap()
-
-def test():
-    H = Element('H')
-    O = Element('O')
-    N = H + O

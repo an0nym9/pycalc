@@ -51,19 +51,21 @@ class Element:
     def get_valence(self) -> int:
         """Get the total valence electrons."""
         group = self.get_group()
-        if group <= 12:
+        if group in (1, 2):
             return group
-        return group - 10
+        if 13 <= group <= 18:
+            return group - 10
+        return 0
 
     def get_type(self) -> str:
         """Get the type ion of the Element object."""
         valence = self.get_valence()
         if self.get_group() != 14:
-            if valence in range(1, 4):
+            if  1 <= valence <= 4:
                 return "cation"
-            elif valence in range(5, 9):
+            elif 5 <= valence <= 9:
                 return "anion"
-        return str()
+        return ''
 
     def get_group(self, /) -> int:
         """Get the group or family of the Element object."""

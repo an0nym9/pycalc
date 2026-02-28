@@ -76,7 +76,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 5px;
+    gap: 25px;
 }
 
 .page {
@@ -175,4 +175,44 @@ main {
 
 .page svg {
     width: 35px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.feature-group {
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.feature-group:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-4px);
+}
+
+.feature-group h3 {
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.feature-group ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-group li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
+}
+
+.feature-group li:hover {
+    color: var(--text);
 }

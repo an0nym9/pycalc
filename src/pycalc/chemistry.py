@@ -50,7 +50,7 @@ class Element:
 
     def get_valence(self) -> int:
         """Get the total valence electrons."""
-        group = self.get_group()
+        group = self.get_group()[0]
         if group in (1, 2):
             return group
         if 13 <= group <= 18:
@@ -67,7 +67,7 @@ class Element:
                 return "anion"
         return ''
 
-    def get_group(self, /) -> int:
+    def get_group(self, /) -> tuple | int:
         """Get the group or family of the Element object."""
         ranges = (
             (1, 3, 11, 19, 37, 55, 87), (4, 12, 20, 38, 56, 88),
@@ -82,7 +82,13 @@ class Element:
         )
         for i, r in enumerate(ranges, start=1):
             if self.atomic_number in r:
-                return i
+                return [i] + [
+                    None
+                    if i not in (1, 2, range(13, 19)) else
+                    f"{i}A"
+                    if i not in (range(13, 19)) else
+                    f"{i-10}A"
+                ]
         return -1
 
     def get_period(self, /) -> int:
@@ -139,7 +145,7 @@ def run_chemistry():
                 case "get valence electrons":
                     result = element.get_valence()
                 case "get group":
-                    result = element.get_group()
+                    result = element.get_group()[0]
                 case "get period":
                     result = element.get_period()
                 case "get type":

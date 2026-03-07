@@ -25,52 +25,58 @@ Learn more on the [PyCalc website](https://an0nym9.github.io/pycalc/).
 Below are the features currently supported. For detailed explanations, see the [Features documentation](docs/FEATURES.md).
 
 ### Core Math
-* Basic Arithmetic (`+`, `-`, `*`, `/`)
-* Expression Evaluation
-* Calculation History
-* Remainder Calculation
-* Factorial
-* Permutations
-* Combinations
+
+* Basic arithmetic (`+`, `-`, `*`, `/`)
+* Expression evaluation
+* Calculation history
+* Remainder calculation
+* Factorials
+* Permutations and combinations
 
 ### Number Theory
-* Prime Checker
-* Semiprime Checker
-* Prime Sequence Generator
-* Semiprime Sequence Generator
-* Factorization
-* Least Common Multiple (LCM)
-* Greatest Common Divisor (GCD)
+
+* Prime number checking
+* Semiprime checking
+* Prime sequence generation
+* Semiprime sequence generation
+* Integer factorization
+* Greatest common divisor (GCD)
+* Least common multiple (LCM)
 
 ### Fractions
-* Fraction → Decimal Conversion
-* Decimal → Fraction Conversion
-* Convert to Proper Fraction
-* Get Numerator / Denominator
+
+* Fraction → decimal conversion
+* Decimal → fraction conversion
+* Proper fraction conversion
+* Numerator and denominator extraction
 
 ### Polynomials
-* Get Coefficients
-* Get Terms
-* Get Variables
-* Determine Type by Term
-* Determine Type by Degree
+
+* Extract coefficients, terms, and variables
+* Classify by number of terms (monomial, binomial, etc.)
+* Classify by degree
 
 ### Sequences & Finance
-* Arithmetic Sequences
-* Arithmetic Series
-* Arithmetic Difference
-* Interest Calculations
+
+* Arithmetic sequences
+* Arithmetic series
+* Common difference calculation
+* Interest calculations
 
 ### Scientific Tools
-* Significant Figures
-  * Count
-  * Convert to Proper Form
-* Chemistry Support
-  * Validate Element
-  * Identify Diatomic Elements
-  * Determine Valence
-  * Identify Ion Type
-  * Find Group or Period
+
+**Significant Figures**
+
+* Count significant figures
+* Convert numbers to proper significant-figure form
+
+**Chemistry Utilities**
+
+* Validate chemical elements
+* Identify diatomic elements
+* Determine valence
+* Identify ion types
+* Find element group or period
 
 ## Requirements
 

@@ -1,120 +1,106 @@
 # pycalc
 
-![Version](https://img.shields.io/badge/version-0.0.6-purple?style=flat-square) ![Python](https://img.shields.io/badge/python-3.14.0-blue?style=flat-square&logo=python&logoColor=white) ![Poetry](https://img.shields.io/badge/poetry-2.2.1-lightblue?style=flat-square&logo=poetry&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-2.2.1-orange?style=flat-square&logo=pytest&logoColor=white) ![Lua](https://img.shields.io/badge/lua-5.4.8-darkblue?style=flat-square&logo=lua&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+![Version](https://img.shields.io/badge/version-0.0.6-purple?style=flat-square) ![Python](https://img.shields.io/badge/python-3.14.0-blue?style=flat-square&logo=python&logoColor=white) ![Poetry](https://img.shields.io/badge/poetry-2.2.1-lightblue?style=flat-square&logo=poetry&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-9.0.2-orange?style=flat-square&logo=pytest&logoColor=white) ![Lua](https://img.shields.io/badge/lua-5.4.8-darkblue?style=flat-square&logo=lua&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
-<p align="center">
-  <img src="assets/pycalc-ascii-art.png" width="100%" />
-</p>
+![pycalc](assets/pycalc-ascii-art.png)
 
-A simple command-line calculator built with **Python** and **Lua** that evaluates both mathematical and chemical expressions directly in the terminal, designed for simplicity and ease of use.
+**pycalc** is a lightweight command-line calculator built with **Python** and **Lua**. It evaluates mathematical and chemical expressions directly in the terminal, with a focus on simplicity, flexibility, and extensibility.
 
-Learn more on the [PyCalc website](https://an0nym9.github.io/pycalc/).
+Learn more: https://an0nym9.github.io/pycalc/
 
-> [!NOTE]
-> This project is still under active development and is **not yet production-ready**.
+> [!WARNING]
+> This project is under active development and is not production-ready.
+
+---
 
 ## Table of Contents
 
-* [Features](#features)
-* [Installation](#installation)
-* [Examples](#examples)
-* [License](#license)
+- [Features](#features)
+- [Installation](#installation)
+- [Examples](#examples)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
 
 ## Features
 
-Below are the features currently supported. For detailed explanations, see the [Features documentation](docs/FEATURES.md).
+A summary of currently supported functionality. For full details, see the [Features documentation](docs/FEATURES.md).
 
 ### Core Math
-
-* Basic arithmetic (`+`, `-`, `*`, `/`)
-* Expression evaluation
-* Calculation history
-* Remainder calculation
-* Factorials
-* Permutations and combinations
+- Basic arithmetic (`+`, `-`, `*`, `/`)
+- Expression evaluation
+- Calculation history
+- Remainder operations
+- Factorials
+- Permutations and combinations
 
 ### Number Theory
-
-* Prime number checking
-* Semiprime checking
-* Prime sequence generation
-* Semiprime sequence generation
-* Integer factorization
-* Greatest common divisor (GCD)
-* Least common multiple (LCM)
+- Prime and semiprime checks
+- Prime and semiprime sequence generation
+- Integer factorization
+- Greatest Common Divisor (GCD)
+- Least Common Multiple (LCM)
 
 ### Fractions
-
-* Fraction → decimal conversion
-* Decimal → fraction conversion
-* Proper fraction conversion
-* Numerator and denominator extraction
+- Fraction to decimal conversion
+- Decimal to fraction conversion
+- Proper fraction formatting
+- Numerator and denominator extraction
 
 ### Polynomials
+- Extract coefficients, terms, and variables
+- Classification by number of terms (monomial, binomial, etc.)
+- Classification by degree
 
-* Extract coefficients, terms, and variables
-* Classify by number of terms (monomial, binomial, etc.)
-* Classify by degree
-
-### Sequences & Finance
-
-* Arithmetic sequences
-* Arithmetic series
-* Common difference calculation
-* Interest calculations
+### Sequences and Finance
+- Arithmetic sequences and series
+- Common difference calculation
+- Basic interest calculations
 
 ### Scientific Tools
 
-**Significant Figures**
+#### Significant Figures
+- Count significant figures
+- Format numbers with correct significant figures
 
-* Count significant figures
-* Convert numbers to proper significant-figure form
+#### Chemistry Utilities
+- Validate chemical elements
+- Identify diatomic elements
+- Determine valence
+- Identify ion types
+- Retrieve element group and period
 
-**Chemistry Utilities**
-
-* Validate chemical elements
-* Identify diatomic elements
-* Determine valence
-* Identify ion types
-* Find element group or period
-
-## Requirements
-
-* **Python 3.11+**
-* **Lua 5.4+**
-* **Poetry 2.2+**
+---
 
 ## Installation
 
-Follow the steps below to set up and run **Pycalc**.
+Follow these steps to install and run **pycalc**.
 
 > [!NOTE]
-> Ensure that **Python** and **Lua** are installed before running the program.
+> Ensure Python and Lua are installed before proceeding.
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/an0nym9/pycalc.git
 cd pycalc
 ```
 
-### 2. Install Dependencies Using Poetry
-
-Make sure Poetry is installed (tested with version **2.2.1**).
+### 2. Install dependencies
 
 ```bash
 poetry install
 ```
 
-### 3. Run Pycalc
+### 3. Run the application
 
 ```bash
 poetry run pycalc
 ```
 
-### 4. Run Tests (Optional)
-
-Make sure Pytest is installed (tested with version **9.0.2**).
+### 4. Run tests (optional)
 
 ```bash
 poetry run pytest

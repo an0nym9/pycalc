@@ -1,8 +1,12 @@
 :root {
     --surface: #0B0F19;
+    --surface-2: #0F1629;
     --accent: #8B5CF6;
+    --accent-soft: rgba(139, 92, 246, 0.15);
     --muted: #A1A1AA;
     --text: #FAFAFA;
+    --border: rgba(255, 255, 255, 0.08);
+    --glass: rgba(255, 255, 255, 0.04);
 }
 
 * {
@@ -14,7 +18,7 @@
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text);
-    background-color: var(--surface);
+    background: radial-gradient(circle at top, #111827, var(--surface));
     user-select: none;
 }
 
@@ -23,31 +27,32 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 18px 60px;
-    background-color: var(--surface);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    background: rgba(11, 15, 25, 0.6);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .logo {
     font-family: 'Fira Code', monospace;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--accent);
     letter-spacing: 1px;
-    margin: 0;
 }
 
 #options {
     list-style: none;
     display: flex;
     gap: 40px;
-    margin: 0;
-    padding: 0;
 }
 
 #options li {
     cursor: pointer;
     font-weight: 500;
     color: var(--muted);
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     position: relative;
 }
 
@@ -66,43 +71,45 @@ body {
     bottom: -6px;
     width: 100%;
     height: 2px;
-    background: var(--accent);
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 main {
-    width: 100vw;
-    padding: 15px;
+    padding: 40px 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    gap: 25px;
+    align-items: center;
+    gap: 30px;
 }
 
 .page {
-    width: 700px;
+    width: 100%;
+    max-width: 720px;
     padding: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.02);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
 .page:hover {
-    border-color: rgba(139, 92, 246, 0.4);
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+    transform: translateY(-4px);
+    border-color: rgba(139, 92, 246, 0.5);
 }
 
 .page h2 {
     font-size: 2rem;
     margin-bottom: 15px;
-    color: var(--accent);
+    background: linear-gradient(90deg, #fff, var(--accent));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .page p {
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 25px;
 }
 
@@ -114,19 +121,28 @@ main {
 #features {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     list-style: none;
     margin-bottom: 30px;
 }
 
 #features li {
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    background: rgba(139, 92, 246, 0.15);
-    border: 1px solid rgba(139, 92, 246, 0.4);
+    position: relative;
+    padding: 8px 14px 8px 26px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    background: var(--accent-soft);
+    border: 1px solid rgba(139, 92, 246, 0.35);
     color: var(--accent);
     transition: all 0.25s ease;
+}
+
+#features li::before {
+    content: "✓";
+    position: absolute;
+    left: 8px;
+    font-size: 0.75rem;
+    opacity: 0.8;
 }
 
 #features li:hover {
@@ -137,11 +153,21 @@ main {
 
 .code-preview {
     background: #0d1117;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 30px;
     overflow-x: auto;
+    position: relative;
+}
+
+.code-preview::before {
+    content: "Terminal";
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    font-size: 0.7rem;
+    color: var(--muted);
 }
 
 .code-preview code {
@@ -154,46 +180,53 @@ main {
 .page a {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 22px;
-    border-radius: 8px;
+    justify-content: center;
+    margin: 0 auto;
+    width: fit-content;
+    gap: 8px;
+
+    padding: 10px 20px;
+    border-radius: 10px;
+
     border: 1px solid var(--accent);
-    background: transparent;
+    background: linear-gradient(135deg, transparent, rgba(139, 92, 246, 0.1));
     color: var(--accent);
     font-weight: 600;
     text-decoration: none;
-    cursor: pointer;
+
     transition: all 0.3s ease;
 }
 
 .page a:hover {
     background: var(--accent);
     color: white;
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.5);
     transform: translateY(-2px);
 }
 
 .page svg {
-    width: 35px;
+    width: 18px;
+    height: 18px;
 }
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
 }
 
 .feature-group {
     padding: 20px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    background: var(--glass);
+    border: 1px solid var(--border);
     transition: all 0.3s ease;
 }
 
 .feature-group:hover {
-    border-color: rgba(139, 92, 246, 0.4);
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .feature-group h3 {
@@ -201,16 +234,10 @@ main {
     margin-bottom: 12px;
 }
 
-.feature-group ul {
-    list-style: none;
-    padding-left: 0;
-}
-
 .feature-group li {
     font-size: 0.9rem;
     color: var(--muted);
     margin-bottom: 8px;
-    transition: color 0.2s ease;
 }
 
 .feature-group li:hover {

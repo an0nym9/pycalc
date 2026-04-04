@@ -234,12 +234,34 @@ main {
     margin-bottom: 12px;
 }
 
+.feature-group ul {
+    list-style: none;
+    padding: 0;
+}
+
 .feature-group li {
+    position: relative;
     font-size: 0.9rem;
     color: var(--muted);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    padding-left: 22px;
+    transition: all 0.25s ease;
+}
+
+.feature-group li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.85rem;
+    transition: transform 0.25s ease;
 }
 
 .feature-group li:hover {
     color: var(--text);
+    transform: translateX(4px);
+}
+
+.feature-group li:hover::before {
+    transform: translateX(3px);
 }

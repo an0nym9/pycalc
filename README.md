@@ -26,50 +26,50 @@ Learn more: https://an0nym9.github.io/pycalc/
 
 ## Features
 
-A summary of currently supported functionality. For full details, see the [Features documentation](docs/FEATURES.md).
+Below is an overview of the currently supported functionality. For complete details, refer to the [Features documentation](docs/FEATURES.md).
 
-### Core Math
-- Basic arithmetic (`+`, `-`, `*`, `/`)
-- Expression evaluation
-- Calculation history
-- Remainder operations
-- Factorials
-- Permutations and combinations
+### Core Mathematics
+- Perform basic arithmetic operations (`+`, `-`, `*`, `/`)
+- Evaluate mathematical expressions
+- Track and review calculation history
+- Compute remainders
+- Calculate factorials
+- Solve permutations and combinations
 
 ### Number Theory
-- Prime and semiprime checks
-- Prime and semiprime sequence generation
-- Integer factorization
-- Greatest Common Divisor (GCD)
-- Least Common Multiple (LCM)
+- Check for prime and semiprime numbers
+- Generate prime and semiprime sequences
+- Perform integer factorization
+- Compute Greatest Common Divisor (GCD)
+- Compute Least Common Multiple (LCM)
 
 ### Fractions
-- Fraction to decimal conversion
-- Decimal to fraction conversion
-- Proper fraction formatting
-- Numerator and denominator extraction
+- Convert fractions to decimals
+- Convert decimals to fractions
+- Format proper fractions
+- Extract numerators and denominators
 
 ### Polynomials
 - Extract coefficients, terms, and variables
-- Classification by number of terms (monomial, binomial, etc.)
-- Classification by degree
+- Classify by number of terms (e.g., monomial, binomial)
+- Classify by degree
 
 ### Sequences and Finance
-- Arithmetic sequences and series
-- Common difference calculation
-- Basic interest calculations
+- Analyze arithmetic sequences and series
+- Calculate common differences
+- Perform basic interest calculations
 
 ### Scientific Tools
 
 #### Significant Figures
 - Count significant figures
-- Format numbers with correct significant figures
+- Format values to the correct number of significant figures
 
 #### Chemistry Utilities
 - Validate chemical elements
 - Identify diatomic elements
 - Determine valence
-- Identify ion types
+- Classify ion types
 - Retrieve element group and period
 
 ---

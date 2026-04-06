@@ -76,35 +76,33 @@ Below is an overview of the currently supported functionality. For complete deta
 
 ## Installation
 
-Follow these steps to install and run **pycalc**.
+Follow the steps below to install and run **pycalc**.
 
 > [!NOTE]
-> Ensure Python and Lua are installed before proceeding.
+> Make sure both Python and Lua are installed on your system before you begin.
 
 ### 1. Clone the repository
-
 ```bash
 git clone https://github.com/an0nym9/pycalc.git
 cd pycalc
 ```
 
-### 2. Install dependencies
-
+2. Install dependencies
 ```bash
 poetry install
 ```
 
-### 3. Run the application
-
+3. Run the application
 ```bash
 poetry run pycalc
 ```
 
-### 4. Run tests (optional)
-
+4. Run tests (optional)
 ```bash
 poetry run pytest
 ```
+
+---
 
 ## Examples
 

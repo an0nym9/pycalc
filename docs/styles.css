@@ -3,6 +3,7 @@
     --surface-2: #0F1629;
     --accent: #8B5CF6;
     --accent-2: #6366F1;
+    --accent-3: #A78BFA;
     --accent-soft: rgba(139, 92, 246, 0.15);
     --muted: #A1A1AA;
     --text: #FAFAFA;
@@ -20,10 +21,12 @@ body {
     font-family: 'Inter', sans-serif;
     color: var(--text);
     background:
-        radial-gradient(circle at 20% -10%, rgba(139, 92, 246, 0.25), transparent 40%),
-        radial-gradient(circle at 80% 0%, rgba(99, 102, 241, 0.2), transparent 40%),
+        radial-gradient(circle at 10% -10%, rgba(139, 92, 246, 0.25), transparent 40%),
+        radial-gradient(circle at 90% 0%, rgba(99, 102, 241, 0.2), transparent 40%),
+        radial-gradient(circle at 50% 120%, rgba(167, 139, 250, 0.15), transparent 50%),
         var(--surface);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
 .header {
@@ -31,8 +34,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 18px 60px;
-    backdrop-filter: blur(14px);
-    background: rgba(11, 15, 25, 0.65);
+    backdrop-filter: blur(18px);
+    background: rgba(11, 15, 25, 0.7);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -41,24 +44,32 @@ body {
 
 .logo {
     font-family: 'Fira Code', monospace;
-    font-size: 1.6rem;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    font-size: 1.7rem;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+    background-size: 200% 200%;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: glow 6s ease infinite;
+}
+
+@keyframes glow {
+    0% { background-position: 0% }
+    50% { background-position: 100% }
+    100% { background-position: 0% }
 }
 
 #options {
     list-style: none;
     display: flex;
-    gap: 36px;
+    gap: 34px;
 }
 
 #options li {
     cursor: pointer;
     font-weight: 500;
     color: var(--muted);
-    transition: 0.25s ease;
     position: relative;
+    transition: 0.25s ease;
 }
 
 #options li:hover {
@@ -72,8 +83,8 @@ body {
 #options li::after {
     content: "";
     position: absolute;
-    left: 50%;
     bottom: -6px;
+    left: 50%;
     width: 0;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
@@ -87,32 +98,47 @@ body {
 }
 
 main {
-    padding: 50px 20px;
+    padding: 60px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 35px;
+    gap: 40px;
 }
 
 .page {
     width: 100%;
-    max-width: 740px;
-    padding: 38px;
-    border-radius: 18px;
-    background: var(--glass);
-    backdrop-filter: blur(16px);
+    max-width: 760px;
+    padding: 42px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    backdrop-filter: blur(18px);
     border: 1px solid var(--border);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-    transition: 0.35s ease;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+    transition: 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(139,92,246,0.15), transparent 60%);
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.page:hover::before {
+    opacity: 1;
 }
 
 .page:hover {
-    transform: translateY(-6px) scale(1.01);
+    transform: translateY(-8px) scale(1.01);
     border-color: rgba(139, 92, 246, 0.6);
 }
 
 .page h2 {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     margin-bottom: 15px;
     background: linear-gradient(90deg, #fff, var(--accent));
     background-clip: text;
@@ -158,30 +184,33 @@ main {
 }
 
 #features li:hover {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 8px 22px rgba(139, 92, 246, 0.6);
 }
 
 .code-preview {
     background: #0d1117;
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: 22px;
+    padding: 24px;
     margin-bottom: 30px;
     overflow-x: auto;
     position: relative;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.03),
+        0 10px 30px rgba(0,0,0,0.6);
 }
 
 .code-preview::before {
     content: "Terminal";
     position: absolute;
     top: 8px;
-    left: 12px;
+    left: 14px;
     font-size: 0.7rem;
     color: var(--muted);
+    letter-spacing: 0.5px;
 }
 
 .code-preview code {
@@ -196,12 +225,12 @@ main {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    width: fit-content;
     gap: 8px;
-    padding: 11px 22px;
+    padding: 12px 24px;
     border-radius: 12px;
-    border: 1px solid var(--accent);
-    background: linear-gradient(135deg, transparent, rgba(139, 92, 246, 0.15));
+    border: 1px solid transparent;
+    background: linear-gradient(var(--surface), var(--surface)) padding-box,
+                linear-gradient(135deg, var(--accent), var(--accent-2)) border-box;
     color: var(--accent);
     font-weight: 600;
     text-decoration: none;
@@ -211,7 +240,7 @@ main {
 .page a:hover {
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: white;
-    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
     transform: translateY(-3px);
 }
 
@@ -223,21 +252,36 @@ main {
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 22px;
+    gap: 24px;
 }
 
 .feature-group {
-    padding: 22px;
-    border-radius: 16px;
-    background: var(--glass);
+    padding: 24px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
     border: 1px solid var(--border);
-    transition: 0.3s ease;
+    transition: 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-group::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(139,92,246,0.15), transparent 60%);
+    opacity: 0;
+    transition: 0.35s ease;
+}
+
+.feature-group:hover::before {
+    opacity: 1;
 }
 
 .feature-group:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
     border-color: var(--accent);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
 }
 
 .feature-group h3 {
@@ -269,9 +313,9 @@ main {
 
 .feature-group li:hover {
     color: var(--text);
-    transform: translateX(5px);
+    transform: translateX(6px);
 }
 
 .feature-group li:hover::before {
-    transform: translateX(4px);
+    transform: translateX(5px);
 }

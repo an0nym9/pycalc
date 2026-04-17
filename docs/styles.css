@@ -1,26 +1,29 @@
 :root {
-    --surface: #0B0F19;
-    --surface-2: #0F1629;
-    --accent: #8B5CF6;
-    --accent-soft: rgba(139, 92, 246, 0.15);
+    --surface: #0b0f19;
+    --surface-2: #0f1629;
+    --surface-3: #111827;
+
+    --accent: #8b5cf6;
+    --accent-2: #6366f1;
+    --accent-soft: rgba(139, 92, 246, 0.14);
 
     --text: #fafafa;
     --text-muted: #a1a1aa;
 
-    --border: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(139, 92, 246, 0.4);
+    --border: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(139, 92, 246, 0.45);
 
-    --glass: rgba(255, 255, 255, 0.04);
+    --glass: rgba(255, 255, 255, 0.035);
 
     --radius-sm: 10px;
     --radius: 14px;
-    --radius-lg: 18px;
+    --radius-lg: 20px;
 
-    --blur: 14px;
+    --blur: 16px;
 
-    --shadow-sm: 0 10px 25px rgba(0, 0, 0, 0.25);
-    --shadow-md: 0 20px 60px rgba(0, 0, 0, 0.5);
-    --shadow-accent: 0 10px 30px rgba(139, 92, 246, 0.35);
+    --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.28);
+    --shadow-md: 0 25px 70px rgba(0, 0, 0, 0.55);
+    --shadow-accent: 0 15px 40px rgba(139, 92, 246, 0.35);
 
     --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -36,7 +39,8 @@
 body {
     font-family: 'Inter', sans-serif;
     color: var(--text);
-    background: radial-gradient(circle at top, #111827, var(--surface));
+    background: radial-gradient(circle at top, var(--surface-3), var(--surface));
+    -webkit-font-smoothing: antialiased;
     user-select: none;
 }
 
@@ -44,12 +48,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 60px;
+    padding: 18px clamp(20px, 5vw, 60px);
     position: sticky;
     top: 0;
     z-index: 10;
     backdrop-filter: blur(var(--blur));
-    background: rgba(11, 15, 25, 0.65);
+    background: linear-gradient(to bottom, rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.5));
     border-bottom: 1px solid var(--border);
 }
 
@@ -63,41 +67,40 @@ body {
 #options {
     list-style: none;
     display: flex;
-    gap: 36px;
+    gap: clamp(18px, 3vw, 36px);
 }
 
 #options li {
     cursor: pointer;
     font-weight: 500;
-    color: var(--muted);
-    transition: all 0.25s ease;
+    color: var(--text-muted);
     position: relative;
     transition: color var(--transition);
+}
+
+#options li::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    transform: translateX(-50%);
+    transition: width var(--transition);
 }
 
 #options li:hover {
     color: var(--text);
 }
 
-#options li.active {
-    color: var(--accent);
-}
-
-#options li.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    transition: 0.3s ease;
-    transform: translateX(-50%);
-}
-
 #options li:hover::after,
 #options li.active::after {
     width: 100%;
+}
+
+#options li.active {
+    color: var(--accent);
 }
 
 main {
@@ -111,18 +114,19 @@ main {
 .page {
     width: 100%;
     max-width: 720px;
-    padding: 35px;
-    border-radius: 16px;
+    padding: 36px;
+    border-radius: var(--radius-lg);
     background: var(--glass);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(var(--blur));
     border: 1px solid var(--border);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition), border var(--transition), box-shadow var(--transition);
 }
 
 .page:hover {
-    transform: translateY(-4px);
-    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-accent);
 }
 
 .page h2 {
@@ -140,7 +144,7 @@ main {
 
 .page p {
     color: var(--text-muted);
-    line-height: 1.7;
+    line-height: 1.75;
     margin-bottom: 24px;
 }
 
@@ -158,9 +162,9 @@ main {
     border-radius: 999px;
     font-size: 0.8rem;
     background: var(--accent-soft);
-    border: 1px solid rgba(139, 92, 246, 0.35);
+    border: 1px solid rgba(139, 92, 246, 0.3);
     color: var(--accent);
-    transition: all 0.25s ease;
+    transition: all var(--transition);
 }
 
 #features li::before {
@@ -180,14 +184,14 @@ main {
 .code-preview {
     background: #0d1117;
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: var(--radius);
+    padding: 22px 20px 20px;
     margin-bottom: 30px;
     overflow-x: auto;
     position: relative;
     box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.03),
-        0 10px 30px rgba(0, 0, 0, 0.6);
+        inset 0 0 0 1px rgba(255, 255, 255, 0.025),
+        0 12px 40px rgba(0, 0, 0, 0.65);
 }
 
 .code-preview::before {
@@ -197,13 +201,14 @@ main {
     left: 12px;
     font-size: 0.7rem;
     color: var(--text-muted);
+    letter-spacing: 0.5px;
 }
 
 .code-preview code {
     font-family: 'Fira Code', monospace;
     font-size: 0.9rem;
     color: #e6e6e6;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .page a {
@@ -212,22 +217,20 @@ main {
     justify-content: center;
     margin: 0 auto;
     gap: 8px;
-    padding: 10px 20px;
-    border-radius: 10px;
-
+    padding: 11px 22px;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--accent);
-    background: linear-gradient(135deg, transparent, rgba(139, 92, 246, 0.12));
+    background: linear-gradient(135deg, transparent, rgba(139, 92, 246, 0.15));
     color: var(--accent);
     font-weight: 600;
     text-decoration: none;
-
-    transition: all 0.3s ease;
+    transition: all var(--transition);
 }
 
 .page a:hover {
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: white;
-    box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+    color: #fff;
+    box-shadow: var(--shadow-accent);
     transform: translateY(-3px);
 }
 
@@ -243,11 +246,11 @@ main {
 }
 
 .feature-group {
-    padding: 20px;
+    padding: 22px;
     border-radius: var(--radius);
     background: var(--glass);
     border: 1px solid var(--border);
-    transition: all 0.3s ease;
+    transition: transform var(--transition), border var(--transition), box-shadow var(--transition);
 }
 
 .feature-group:hover {
@@ -271,7 +274,7 @@ main {
     color: var(--text-muted);
     margin-bottom: 10px;
     padding-left: 22px;
-    transition: all 0.25s ease;
+    transition: all var(--transition);
 }
 
 .feature-group li::before {
@@ -289,5 +292,5 @@ main {
 }
 
 .feature-group li:hover::before {
-    transform: translateX(3px);
+    transform: translateX(4px);
 }

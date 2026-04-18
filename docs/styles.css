@@ -2,29 +2,21 @@
     --surface: #0b0f19;
     --surface-2: #0f1629;
     --surface-3: #111827;
-
     --accent: #8b5cf6;
     --accent-2: #6366f1;
     --accent-soft: rgba(139, 92, 246, 0.14);
-
     --text: #fafafa;
     --text-muted: #a1a1aa;
-
     --border: rgba(255, 255, 255, 0.07);
     --border-strong: rgba(139, 92, 246, 0.45);
-
     --glass: rgba(255, 255, 255, 0.035);
-
     --radius-sm: 10px;
     --radius: 14px;
     --radius-lg: 20px;
-
     --blur: 16px;
-
     --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.28);
     --shadow-md: 0 25px 70px rgba(0, 0, 0, 0.55);
     --shadow-accent: 0 15px 40px rgba(139, 92, 246, 0.35);
-
     --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -133,8 +125,9 @@ main {
     font-size: 2rem;
     margin-bottom: 16px;
     background: linear-gradient(90deg, #fff, var(--accent));
+    -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .page h3 {
@@ -164,7 +157,7 @@ main {
     background: var(--accent-soft);
     border: 1px solid rgba(139, 92, 246, 0.3);
     color: var(--accent);
-    transition: all var(--transition);
+    transition: var(--transition);
 }
 
 #features li::before {
@@ -189,9 +182,7 @@ main {
     margin-bottom: 30px;
     overflow-x: auto;
     position: relative;
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.025),
-        0 12px 40px rgba(0, 0, 0, 0.65);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025), 0 12px 40px rgba(0, 0, 0, 0.65);
 }
 
 .code-preview::before {
@@ -224,7 +215,7 @@ main {
     color: var(--accent);
     font-weight: 600;
     text-decoration: none;
-    transition: all var(--transition);
+    transition: var(--transition);
 }
 
 .page a:hover {
@@ -274,7 +265,7 @@ main {
     color: var(--text-muted);
     margin-bottom: 10px;
     padding-left: 22px;
-    transition: all var(--transition);
+    transition: var(--transition);
 }
 
 .feature-group li::before {
